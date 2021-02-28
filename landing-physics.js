@@ -178,8 +178,8 @@ $(function () {
           if (bodies[body].career !== careerTitle) {
             bodies[body].render.opacity = 0.3;
           } else {
-            bodies[body].timeScale = 0.2;
-            let forceMagnitude = 0.5 * bodies[body].mass;
+            // bodies[body].timeScale = 0.2;
+            let forceMagnitude = 0.03 * bodies[body].mass;
             Body.applyForce(bodies[body], bodies[body].position, {
               x:
                 (forceMagnitude + Common.random() * forceMagnitude) *
@@ -204,7 +204,9 @@ $(function () {
       var bodies = Composite.allBodies(engine.world);
       for (body in bodies) {
         bodies[body].render.opacity = 1;
-        bodies[body].timeScale = 1;
+        // if (bodies[body].timeScale !== 1) {
+        //   bodies[body].timeScale = 1;
+        // }
       }
       engine.world.gravity.y = 1;
       engine.timing.timeScale = 1;
