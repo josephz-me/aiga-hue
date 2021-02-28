@@ -108,9 +108,9 @@ a {
 }
 
 .question {
-  font-size: 32px;
+  font-size: 24px;
   font-family: "Recoleta";
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 canvas {
