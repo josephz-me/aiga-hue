@@ -61,20 +61,6 @@ $(function () {
     }
   );
 
-  //   let stack = Composites.stack(browserW / 2, 100, 3, 2, 0, 0, function (x, y) {
-  //     return Bodies.circle(x, y, Common.random(60, 80), {
-  //       // return Bodies.polygon(x, y, Common.random(2, 8), Common.random(20, 60), {
-  //       friction: 0.00001,
-  //       restitution: 0.5,
-  //       density: 0.001,
-  //       render: {
-  //         fillStyle: "#ffffff",
-  //         opacity: Math.random(1),
-  //       },
-  //       name: "hello",
-  //     });
-  //   });
-
   let industries = {
     "Graphic Designer": {
       file: "graphicDesigner.png",
@@ -111,8 +97,8 @@ $(function () {
       Bodies.rectangle(
         Common.random(browserW - 700, browserW),
         Common.random(0, browserH - 200),
-        250,
-        250,
+        200,
+        200,
         {
           friction: 0.001,
           restitution: 0.5,
@@ -120,8 +106,8 @@ $(function () {
           render: {
             sprite: {
               texture: "img/" + industries[industry].file,
-              xScale: 0.7,
-              yScale: 0.7,
+              xScale: 0.6,
+              yScale: 0.6,
             },
           },
         }
@@ -198,7 +184,7 @@ $(function () {
               x:
                 (forceMagnitude + Common.random() * forceMagnitude) *
                 Common.choose([1, -1]),
-              y: -forceMagnitude + Common.random() * -forceMagnitude,
+              y: -forceMagnitude + 1 * -forceMagnitude,
             });
           }
         }
@@ -224,4 +210,15 @@ $(function () {
       engine.timing.timeScale = 1;
     }
   );
+
+  hideLoading();
 });
+
+const hideLoading = () => {
+  setTimeout(() => {
+    $(".loadingScreen").addClass("hideLoading");
+  }, 500);
+  setTimeout(() => {
+    $(".loadingScreen").remove();
+  }, 3000);
+};
