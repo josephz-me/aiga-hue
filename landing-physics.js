@@ -86,7 +86,7 @@ $(function () {
     },
     "AI Designer": {
       file: "AIDesigner.png",
-      color: "#F2AE49",
+      color: "#E25757",
     },
     "Packaging Designer": {
       file: "packaging.png",
