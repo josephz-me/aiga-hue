@@ -71,7 +71,7 @@ body {
 }
 
 nav {
-  font-size: 24px;
+  font-size: 18px;
   font-family: "Recoleta";
   color: white;
   font-weight: 600;
@@ -111,7 +111,7 @@ a {
   transition: opacity 0.2s;
   line-height: 1.3em;
   padding: 10px 40px 10px 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   transition: background-color 0.2s;
 }
 
@@ -120,7 +120,7 @@ a {
 }
 
 .careers:hover a:not(:hover) {
-  opacity: 0.5;
+  opacity: 0.3;
 }
 .question {
   font-size: 24px;

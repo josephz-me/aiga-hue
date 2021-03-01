@@ -9,8 +9,10 @@ $(function () {
     Events = Matter.Events,
     MouseConstraint = Matter.MouseConstraint,
     Composites = Matter.Composites,
+    Vertices = Matter.Vertices,
     Composite = Matter.Composite,
-    Common = Matter.Common;
+    Common = Matter.Common,
+    Svg = Matter.Svg;
 
   let engine = Engine.create();
 
@@ -88,9 +90,63 @@ $(function () {
     },
     "Packaging Designer": {
       file: "packaging.png",
-      color: "#E25757",
+      color: "#A9926F",
     },
   };
+
+  // if (typeof fetch !== "undefined") {
+  //   var select = function (root, selector) {
+  //     return Array.prototype.slice.call(root.querySelectorAll(selector));
+  //   };
+
+  //   var loadSvg = function (url) {
+  //     return fetch(url)
+  //       .then(function (response) {
+  //         return response.text();
+  //       })
+  //       .then(function (raw) {
+  //         return new window.DOMParser().parseFromString(raw, "image/svg+xml");
+  //       });
+  //   };
+
+  //   ["./img/vector.svg"].forEach(function (path, i) {
+  //     loadSvg(path).then(function (root) {
+  //       var color = Common.choose([
+  //         "#f19648",
+  //         "#f5d259",
+  //         "#f55a3c",
+  //         "#063e7b",
+  //         "#ececd1",
+  //       ]);
+
+  //       var vertexSets = select(root, "path").map(function (path) {
+  //         return Vertices.scale(Svg.pathToVertices(path, 30), 0.4, 0.4);
+  //       });
+
+  //       World.add(
+  //         engine.world,
+  //         Bodies.fromVertices(
+  //           100 + i * 150,
+  //           200 + i * 50,
+  //           vertexSets,
+  //           {
+  //             render: {
+  //               fillStyle: "transparent",
+  //               strokeStyle: color,
+  //               lineWidth: 1,
+  //               sprite: {
+  //                 texture: "img/vector.png",
+  //                 xScale: 0.4,
+  //                 yScale: 0.4,
+  //               },
+  //             },
+  //           },
+  //           true
+  //         )
+  //       );
+  //     });
+  //   });
+  // }
 
   for (let industry in industries) {
     World.add(engine.world, [
@@ -105,9 +161,9 @@ $(function () {
           career: industry,
           render: {
             sprite: {
-              texture: "img/" + industries[industry].file,
-              xScale: 0.6,
-              yScale: 0.6,
+              texture: "img-test/" + industries[industry].file,
+              xScale: 0.5,
+              yScale: 0.5,
             },
           },
         }
