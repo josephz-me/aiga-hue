@@ -65,110 +65,99 @@ $(function () {
 
   let industries = {
     "Graphic Designer": {
-      file: "graphicDesigner.png",
+      name: "Graphic Designer",
+      file: "ARVR.png",
+      svg: "./img-test/arvr-vector.svg",
+      // file: "graphicDesigner.png",
       color: "#6F39DF",
     },
     "UX/UI Designer": {
+      name: "UX/UI Designer",
       file: "UXUI.png",
+      svg: "./img-test/uxui-vector.svg",
+      // file: "UXUI.png",
       color: "#5E96FF",
     },
     Illustrator: {
+      name: "Illustrator",
       file: "illustrator.png",
+      svg: "./img-test/illustrator-vector.svg",
       color: "#F2AE49",
     },
     "Game Designer": {
-      file: "gameDesigner.png",
+      name: "Game Designer",
+      file: "packaging.png",
+      svg: "./img-test/packaging-vector.svg",
+      // file: "gameDesigner.png",
       color: "#4ED07A",
     },
-    "AR/VR Designer": {
-      file: "ARVR.png",
-      color: "#3AD8D8",
-    },
     "AI Designer": {
-      file: "AIDesigner.png",
+      name: "AI Designer",
+      file: "packaging.png",
+      svg: "./img-test/packaging-vector.svg",
+      // file: "AIDesigner.png",
       color: "#E25757",
     },
     "Packaging Designer": {
+      name: "Packaging Designer",
       file: "packaging.png",
+      svg: "./img-test/packaging-vector.svg",
       color: "#A9926F",
+    },
+    "AR/VR Designer": {
+      name: "AR/VR Designer",
+      file: "packaging.png",
+      svg: "./img-test/packaging-vector.svg",
+      color: "#39D8D8",
     },
   };
 
-  // if (typeof fetch !== "undefined") {
-  //   var select = function (root, selector) {
-  //     return Array.prototype.slice.call(root.querySelectorAll(selector));
-  //   };
+  if (typeof fetch !== "undefined") {
+    var select = function (root, selector) {
+      return Array.prototype.slice.call(root.querySelectorAll(selector));
+    };
 
-  //   var loadSvg = function (url) {
-  //     return fetch(url)
-  //       .then(function (response) {
-  //         return response.text();
-  //       })
-  //       .then(function (raw) {
-  //         return new window.DOMParser().parseFromString(raw, "image/svg+xml");
-  //       });
-  //   };
+    var loadSvg = function (url) {
+      return fetch(url)
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (raw) {
+          return new window.DOMParser().parseFromString(raw, "image/svg+xml");
+        });
+    };
 
-  //   ["./img/vector.svg"].forEach(function (path, i) {
-  //     loadSvg(path).then(function (root) {
-  //       var color = Common.choose([
-  //         "#f19648",
-  //         "#f5d259",
-  //         "#f55a3c",
-  //         "#063e7b",
-  //         "#ececd1",
-  //       ]);
+    Object.keys(industries).forEach((key) =>
+      loadSvg(industries[key].svg).then(function (root) {
+        var vertexSets = select(root, "path").map(function (path) {
+          return Vertices.scale(Svg.pathToVertices(path, 30), 0.25, 0.25);
+        });
 
-  //       var vertexSets = select(root, "path").map(function (path) {
-  //         return Vertices.scale(Svg.pathToVertices(path, 30), 0.4, 0.4);
-  //       });
-
-  //       World.add(
-  //         engine.world,
-  //         Bodies.fromVertices(
-  //           100 + i * 150,
-  //           200 + i * 50,
-  //           vertexSets,
-  //           {
-  //             render: {
-  //               fillStyle: "transparent",
-  //               strokeStyle: color,
-  //               lineWidth: 1,
-  //               sprite: {
-  //                 texture: "img/vector.png",
-  //                 xScale: 0.4,
-  //                 yScale: 0.4,
-  //               },
-  //             },
-  //           },
-  //           true
-  //         )
-  //       );
-  //     });
-  //   });
-  // }
-
-  for (let industry in industries) {
-    World.add(engine.world, [
-      Bodies.rectangle(
-        Common.random(browserW - 700, browserW),
-        Common.random(0, browserH - 200),
-        200,
-        200,
-        {
-          friction: 0.001,
-          restitution: 0.5,
-          career: industry,
-          render: {
-            sprite: {
-              texture: "img-test/" + industries[industry].file,
-              xScale: 0.5,
-              yScale: 0.5,
+        console.log(Object.keys(industries));
+        World.add(
+          engine.world,
+          Bodies.fromVertices(
+            Common.random(0, browserW),
+            40,
+            vertexSets,
+            {
+              career: industries[key].name,
+              render: {
+                fillStyle: "transparent",
+                strokeStyle: "white",
+                lineWidth: 1,
+                sprite: {
+                  texture: `./img-test/${industries[key].file}`,
+                  xScale: 0.125,
+                  yScale: 0.125,
+                },
+              },
             },
-          },
-        }
-      ),
-    ]);
+            true
+          )
+        );
+      })
+    );
   }
 
   let mouse = Mouse.create(render.canvas);
@@ -183,7 +172,6 @@ $(function () {
   Matter.Events.on(mouseConstraint, "mousedown", function () {
     let body = mouseConstraint.body;
     if (body !== null) {
-      // console.log(mouseConstraint.body.career);
     } else {
       return;
     }
@@ -226,9 +214,8 @@ $(function () {
     function () {
       let careerTitle = $(this).text();
       let bodies = Composite.allBodies(engine.world);
-
+      console.log(bodies);
       $("body").css("background", `${industries[careerTitle].color}`);
-
       for (body in bodies) {
         if ("career" in bodies[body]) {
           if (bodies[body].career !== careerTitle) {
@@ -245,14 +232,6 @@ $(function () {
           }
         }
       }
-
-      // setTimeout(function () {
-      //   engine.timing.timeScale = 1;
-      //   // console.log("running");
-      // }, 1000);
-
-      // create some random forces
-      // explosion(engine);
       engine.world.gravity.y = 0.03;
     },
     function () {
@@ -260,9 +239,6 @@ $(function () {
       var bodies = Composite.allBodies(engine.world);
       for (body in bodies) {
         bodies[body].render.opacity = 1;
-        // if (bodies[body].timeScale !== 1) {
-        //   bodies[body].timeScale = 1;
-        // }
       }
       engine.world.gravity.y = 1;
       engine.timing.timeScale = 1;
