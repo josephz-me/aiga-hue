@@ -85,49 +85,63 @@ $(function () {
   let industries = {
     "Graphic Designer": {
       name: "Graphic Designer",
-      file: "ARVR.png",
-      svg: "./img-test/arvr-vector.svg",
+      file: "arvr.png",
+      svg: "arvr-vector.svg",
       // file: "graphicDesigner.png",
       color: "#6F39DF",
+      text: "graphic-text.png",
+      textSvg: "graphic-text-vector.svg",
     },
     "UX/UI Designer": {
       name: "UX/UI Designer",
-      file: "UXUI.png",
-      svg: "./img-test/uxui-vector.svg",
+      file: "uxui.png",
+      svg: "uxui-vector.svg",
       // file: "UXUI.png",
       color: "#5E96FF",
+      text: "uxui-text.png",
+      textSvg: "uxui-text-vector.svg",
     },
     Illustrator: {
       name: "Illustrator",
       file: "illustrator.png",
-      svg: "./img-test/illustrator-vector.svg",
+      svg: "illustrator-vector.svg",
       color: "#F2AE49",
+      text: "illustrator-text.png",
+      textSvg: "illustrator-text-vector.svg",
     },
     "Game Designer": {
       name: "Game Designer",
       file: "packaging.png",
-      svg: "./img-test/packaging-vector.svg",
+      svg: "packaging-vector.svg",
       // file: "gameDesigner.png",
       color: "#4ED07A",
+      text: "game-text.png",
+      textSvg: "game-text-vector.svg",
     },
     "AI Designer": {
       name: "AI Designer",
       file: "packaging.png",
-      svg: "./img-test/packaging-vector.svg",
+      svg: "packaging-vector.svg",
       // file: "AIDesigner.png",
       color: "#E25757",
+      text: "ai-text.png",
+      textSvg: "ai-text-vector.svg",
     },
     "Packaging Designer": {
       name: "Packaging Designer",
       file: "packaging.png",
-      svg: "./img-test/packaging-vector.svg",
+      svg: "packaging-vector.svg",
       color: "#A9926F",
+      text: "packaging-text.png",
+      textSvg: "packaging-text-vector.svg",
     },
     "AR/VR Designer": {
       name: "AR/VR Designer",
       file: "packaging.png",
-      svg: "./img-test/packaging-vector.svg",
+      svg: "packaging-vector.svg",
       color: "#39D8D8",
+      text: "arvr-text.png",
+      textSvg: "arvr-text-vector.svg",
     },
   };
 
@@ -146,8 +160,8 @@ $(function () {
         });
     };
 
-    Object.keys(industries).forEach((key) =>
-      loadSvg(industries[key].svg).then(function (root) {
+    Object.keys(industries).forEach((key) => {
+      loadSvg("./img-test/" + industries[key].svg).then(function (root) {
         let svgScale = 0.25;
         var vertexSets = select(root, "path").map(function (path) {
           return Vertices.scale(
@@ -160,15 +174,12 @@ $(function () {
         World.add(
           engine.world,
           Bodies.fromVertices(
-            Common.random(0, browserW),
-            40,
+            Common.random(browserW / 2, browserW),
+            Common.random(0, browserH / 2),
             vertexSets,
             {
               career: industries[key].name,
               render: {
-                fillStyle: "transparent",
-                strokeStyle: "white",
-                lineWidth: 1,
                 sprite: {
                   texture: `./img-test/${industries[key].file}`,
                   xScale: svgScale / 2,
@@ -179,15 +190,46 @@ $(function () {
             true
           )
         );
-      })
-    );
+      });
+      // load text svgs
+      loadSvg("./img-test/" + industries[key].textSvg).then(function (root) {
+        let svgScale = 0.2;
+        var vertexSets = select(root, "path").map(function (path) {
+          return Vertices.scale(
+            Svg.pathToVertices(path, 30),
+            svgScale,
+            svgScale
+          );
+        });
+
+        World.add(
+          engine.world,
+          Bodies.fromVertices(
+            Common.random(browserW / 4, browserW),
+            Common.random(0, browserH / 2),
+            vertexSets,
+            {
+              career: industries[key].name,
+              render: {
+                sprite: {
+                  texture: `./img-test/${industries[key].text}`,
+                  xScale: svgScale / 4,
+                  yScale: svgScale / 4,
+                },
+              },
+            },
+            true
+          )
+        );
+      });
+    });
   }
 
   let mouse = Mouse.create(render.canvas);
   let mouseConstraint = MouseConstraint.create(engine, {
     mouse: mouse,
     constraint: {
-      render: { visible: true },
+      render: { visible: false },
       stiffness: 1,
     },
   });
