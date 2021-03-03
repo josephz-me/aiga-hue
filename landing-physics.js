@@ -32,28 +32,47 @@ $(function () {
   });
 
   //boundaries
-  let ground = Bodies.rectangle(browserW / 2, browserH + 30 + 2, browserW, 60, {
-    isStatic: true,
-    render: {
-      lineWidth: 2,
-    },
-  });
-  let ceiling = Bodies.rectangle(browserW / 2, -32, browserW, 60, {
-    isStatic: true,
-    render: {
-      lineWidth: 2,
-    },
-  });
-  let leftWall = Bodies.rectangle(-30 - 2, browserH / 2, 60, browserH * 2, {
-    isStatic: true,
-    render: {
-      lineWidth: 2,
-    },
-  });
-  let rightWall = Bodies.rectangle(
-    browserW + 30 + 2,
+  let thickness = 200;
+  let ground = Bodies.rectangle(
+    browserW / 2,
+    browserH + thickness / 2 + 2,
+    browserW,
+    thickness,
+    {
+      isStatic: true,
+      render: {
+        lineWidth: 2,
+      },
+    }
+  );
+  let ceiling = Bodies.rectangle(
+    browserW / 2,
+    -thickness / 2 - 2,
+    browserW,
+    thickness,
+    {
+      isStatic: true,
+      render: {
+        lineWidth: 2,
+      },
+    }
+  );
+  let leftWall = Bodies.rectangle(
+    -thickness / 2 - 2,
     browserH / 2,
-    60,
+    thickness,
+    browserH * 2,
+    {
+      isStatic: true,
+      render: {
+        lineWidth: 2,
+      },
+    }
+  );
+  let rightWall = Bodies.rectangle(
+    browserW + thickness / 2 + 2,
+    browserH / 2,
+    thickness,
     browserH * 2,
     {
       isStatic: true,
@@ -129,11 +148,15 @@ $(function () {
 
     Object.keys(industries).forEach((key) =>
       loadSvg(industries[key].svg).then(function (root) {
+        let svgScale = 0.25;
         var vertexSets = select(root, "path").map(function (path) {
-          return Vertices.scale(Svg.pathToVertices(path, 30), 0.25, 0.25);
+          return Vertices.scale(
+            Svg.pathToVertices(path, 30),
+            svgScale,
+            svgScale
+          );
         });
 
-        console.log(Object.keys(industries));
         World.add(
           engine.world,
           Bodies.fromVertices(
@@ -148,8 +171,8 @@ $(function () {
                 lineWidth: 1,
                 sprite: {
                   texture: `./img-test/${industries[key].file}`,
-                  xScale: 0.125,
-                  yScale: 0.125,
+                  xScale: svgScale / 2,
+                  yScale: svgScale / 2,
                 },
               },
             },
@@ -214,7 +237,6 @@ $(function () {
     function () {
       let careerTitle = $(this).text();
       let bodies = Composite.allBodies(engine.world);
-      console.log(bodies);
       $("body").css("background", `${industries[careerTitle].color}`);
       for (body in bodies) {
         if ("career" in bodies[body]) {

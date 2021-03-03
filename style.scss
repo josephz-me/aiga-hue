@@ -63,6 +63,7 @@ body {
   font-size: 32px;
   transition: 2s opacity;
   pointer-events: none;
+  opacity: 1;
 }
 
 .hideLoading {
@@ -110,23 +111,63 @@ a {
 
   transition: opacity 0.2s;
   line-height: 1.3em;
-  padding: 10px 40px 10px 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  transition: background-color 0.2s;
+  padding: 0 40px 0 40px;
+  // border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.2s, transform 0.1s;
+  opacity: 0;
+  animation: fadeIn 1s ease-in both;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-.careers a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.careers:hover a:not(:hover) {
-  opacity: 0.3;
-}
 .question {
   font-size: 24px;
   font-family: "Recoleta";
   margin-bottom: 10px;
   padding-left: 40px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in both;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.careers:hover a:not(:hover) {
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: none;
+}
+
+.careers a:hover {
+  // background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(10px);
+}
+
+.careers a:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.careers a:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.careers a:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.careers a:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.careers a:nth-child(5) {
+  animation-delay: 1s;
+}
+.careers a:nth-child(6) {
+  animation-delay: 1.2s;
+}
+.careers a:nth-child(7) {
+  animation-delay: 1.4s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 canvas {
