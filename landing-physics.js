@@ -161,7 +161,7 @@ $(function () {
     };
 
     Object.keys(industries).forEach((key) => {
-      loadSvg("./img-test/" + industries[key].svg).then(function (root) {
+      loadSvg("./img/" + industries[key].svg).then(function (root) {
         let svgScale = 0.25;
         var vertexSets = select(root, "path").map(function (path) {
           return Vertices.scale(
@@ -181,7 +181,7 @@ $(function () {
               career: industries[key].name,
               render: {
                 sprite: {
-                  texture: `./img-test/${industries[key].file}`,
+                  texture: `./img/${industries[key].file}`,
                   xScale: svgScale / 2,
                   yScale: svgScale / 2,
                 },
@@ -192,7 +192,7 @@ $(function () {
         );
       });
       // load text svgs
-      loadSvg("./img-test/" + industries[key].textSvg).then(function (root) {
+      loadSvg("./img/" + industries[key].textSvg).then(function (root) {
         let svgScale = 0.2;
         var vertexSets = select(root, "path").map(function (path) {
           return Vertices.scale(
@@ -212,7 +212,7 @@ $(function () {
               career: industries[key].name,
               render: {
                 sprite: {
-                  texture: `./img-test/${industries[key].text}`,
+                  texture: `./img/${industries[key].text}`,
                   xScale: svgScale / 4,
                   yScale: svgScale / 4,
                 },
