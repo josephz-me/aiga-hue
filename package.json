@@ -1,0 +1,26 @@
+{
+  "name": "aiga-census",
+  "version": "1.0.0",
+  "description": "cmu design c studio with kyuha shim",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "node": "^14.14.0",
+    "poly-decomp": "^0.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josephz-me/aiga-project.git"
+  },
+  "author": "joseph z, langston w, stefanie suk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josephz-me/aiga-project/issues"
+  },
+  "homepage": "https://github.com/josephz-me/aiga-project#readme"
+}

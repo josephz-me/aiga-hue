@@ -68,7 +68,7 @@ body {
 
 .hideLoading {
   opacity: 0;
-  transition: 2s opacity;
+  transition: 1s opacity;
 }
 
 nav {
@@ -116,7 +116,7 @@ a {
   transition: background-color 0.2s, transform 0.1s;
   opacity: 0;
   animation: fadeIn 1s ease-in both;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .question {
@@ -126,12 +126,12 @@ a {
   padding-left: 40px;
   opacity: 0;
   animation: fadeIn 1s ease-in both;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .careers:hover a:not(:hover) {
   color: rgba(255, 255, 255, 0.5);
-  text-shadow: none;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
 }
 
 .careers a:hover {
