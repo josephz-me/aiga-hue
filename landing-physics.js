@@ -111,8 +111,8 @@ $(function () {
     },
     "Game Designer": {
       name: "Game Designer",
-      file: "packaging.png",
-      svg: "packaging-vector.svg",
+      file: "game.png",
+      svg: "game-vector.svg",
       // file: "gameDesigner.png",
       color: "#4ED07A",
       text: "game-text.png",
