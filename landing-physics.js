@@ -85,9 +85,8 @@ $(function () {
   let industries = {
     "Graphic Designer": {
       name: "Graphic Designer",
-      file: "arvr.png",
-      svg: "arvr-vector.svg",
-      // file: "graphicDesigner.png",
+      file: "graphic.png",
+      svg: "graphic-vector.svg",
       color: "#6F39DF",
       text: "graphic-text.png",
       textSvg: "graphic-text-vector.svg",
@@ -120,9 +119,8 @@ $(function () {
     },
     "AI Designer": {
       name: "AI Designer",
-      file: "packaging.png",
-      svg: "packaging-vector.svg",
-      // file: "AIDesigner.png",
+      file: "ai.png",
+      svg: "ai-vector.svg",
       color: "#E25757",
       text: "ai-text.png",
       textSvg: "ai-text-vector.svg",
@@ -137,8 +135,8 @@ $(function () {
     },
     "AR/VR Designer": {
       name: "AR/VR Designer",
-      file: "packaging.png",
-      svg: "packaging-vector.svg",
+      file: "arvr.png",
+      svg: "arvr-vector.svg",
       color: "#39D8D8",
       text: "arvr-text.png",
       textSvg: "arvr-text-vector.svg",
@@ -162,7 +160,7 @@ $(function () {
 
     Object.keys(industries).forEach((key) => {
       loadSvg("./img/" + industries[key].svg).then(function (root) {
-        let svgScale = 0.25;
+        let svgScale = 0.3;
         var vertexSets = select(root, "path").map(function (path) {
           return Vertices.scale(
             Svg.pathToVertices(path, 30),
@@ -193,7 +191,7 @@ $(function () {
       });
       // load text svgs
       loadSvg("./img/" + industries[key].textSvg).then(function (root) {
-        let svgScale = 0.2;
+        let svgScale = 0.27;
         var vertexSets = select(root, "path").map(function (path) {
           return Vertices.scale(
             Svg.pathToVertices(path, 30),
