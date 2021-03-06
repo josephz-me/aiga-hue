@@ -1,4 +1,46 @@
 $(function () {
+  $(".careers a").on("click", function () {
+    let career = $(this).attr("id");
+    console.log(career);
+    sessionStorage.setItem("career", career);
+  });
+
+  $(".careers a").hover(
+    function () {
+      let careerTitle = $(this).text();
+      let bodies = Composite.allBodies(engine.world);
+      $("body").css("background", `${industries[careerTitle].color}`);
+      for (body in bodies) {
+        if ("career" in bodies[body]) {
+          if (bodies[body].career !== careerTitle) {
+            bodies[body].render.opacity = 0.3;
+          } else {
+            // bodies[body].timeScale = 0.2;
+            let forceMagnitude = 0.03 * bodies[body].mass;
+            Body.applyForce(bodies[body], bodies[body].position, {
+              x:
+                (forceMagnitude + Common.random() * forceMagnitude) *
+                Common.choose([1, -1]),
+              y: -forceMagnitude + 1 * -forceMagnitude,
+            });
+          }
+        }
+      }
+      engine.world.gravity.y = 0.03;
+    },
+    function () {
+      $("body").css("background", `#20232c`);
+      var bodies = Composite.allBodies(engine.world);
+      for (body in bodies) {
+        bodies[body].render.opacity = 1;
+      }
+      engine.world.gravity.y = 1;
+      engine.timing.timeScale = 1;
+    }
+  );
+
+  // PHYSICS STUFF
+
   let Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
@@ -271,45 +313,10 @@ $(function () {
     }
   };
 
-  //Hover events
-
-  $(".careers a").hover(
-    function () {
-      let careerTitle = $(this).text();
-      let bodies = Composite.allBodies(engine.world);
-      $("body").css("background", `${industries[careerTitle].color}`);
-      for (body in bodies) {
-        if ("career" in bodies[body]) {
-          if (bodies[body].career !== careerTitle) {
-            bodies[body].render.opacity = 0.3;
-          } else {
-            // bodies[body].timeScale = 0.2;
-            let forceMagnitude = 0.03 * bodies[body].mass;
-            Body.applyForce(bodies[body], bodies[body].position, {
-              x:
-                (forceMagnitude + Common.random() * forceMagnitude) *
-                Common.choose([1, -1]),
-              y: -forceMagnitude + 1 * -forceMagnitude,
-            });
-          }
-        }
-      }
-      engine.world.gravity.y = 0.03;
-    },
-    function () {
-      $("body").css("background", `#20232c`);
-      var bodies = Composite.allBodies(engine.world);
-      for (body in bodies) {
-        bodies[body].render.opacity = 1;
-      }
-      engine.world.gravity.y = 1;
-      engine.timing.timeScale = 1;
-    }
-  );
-
   hideLoading();
 });
 
+//LOADING SCREEN
 const hideLoading = () => {
   setTimeout(() => {
     $(".loadingScreen").addClass("hideLoading");

@@ -1,7 +1,105 @@
 $(function () {
+  let questions = [
+    "I've worked in design for:",
+    "I work in:",
+    "Industries I work with:",
+    "My skills include:",
+    "I am currently learning:",
+    "I am currently a/an:",
+    "I work in:__1",
+    "I work in:__2",
+    "I work in:__3",
+    "I'm not currently working because:",
+    "I'm a/an:",
+    "My job is challenging because:",
+    "My job is great because:",
+    "My organization has:",
+    "My department has:",
+    "I've worked here for:",
+    "I've had my role for:",
+    "I typically work:",
+    "I make:",
+    "My benefits include:",
+    "I have:",
+    "I am:",
+    "I am:__1",
+    "I feel:",
+    "On the side I:",
+    "I learned design from:",
+    "I got my degree in:",
+    "I've had:",
+    "I stay current with design by:",
+    "I'm currently:",
+    "My ZIP code is:",
+    "My age is:",
+    "I identify as:",
+    "LGBTQIA+ status:",
+    "I am:__2",
+    "I feel the most critical issues/challenges currently facing design are:",
+    "I feel the most critical issues/challenges currently facing design are:__",
+    "I think the emerging/future technologies that will have the biggest impact on design are:",
+    "I think the most critical design skills for the future will be:",
+    "My main priorities are:",
+  ];
+
+  let chosenCareer = sessionStorage.getItem("career");
+  console.log(chosenCareer);
+
+  $.getJSON("data.json", (data) => {
+    let selectedDesigner = 0;
+    let designersInCareer = [];
+    let designerEmploymentType = [];
+    let designerHoursWorked = [];
+
+    //CAREER
+    for (let designer in data) {
+      if (data[designer][questions[1]].includes(chosenCareer)) {
+        // selectedDesigner++;
+        designersInCareer.push(data[designer]);
+      }
+    }
+
+    console.log(designersInCareer);
+
+    //ORG SIZE
+    let employmentType =
+      designersInCareer[getRandomInt(designersInCareer.length)][questions[5]];
+
+    for (let designer in designersInCareer) {
+      if (designersInCareer[designer][questions[5]] === employmentType) {
+        designerEmploymentType.push(designersInCareer[designer]);
+      }
+    }
+
+    //PROFIT or NONPROFIT
+    let hoursWorked =
+      designerEmploymentType[[getRandomInt(designerEmploymentType.length)]][
+        questions[17]
+      ];
+    if (hoursWorked.includes("|")) {
+      hoursWorked = hoursWorked.substr(0, hoursWorked.indexOf("|"));
+    }
+
+    for (let designer in designerEmploymentType) {
+      if (
+        designerEmploymentType[designer][questions[17]].includes(hoursWorked)
+      ) {
+        designerHoursWorked.push(designerEmploymentType[designer]);
+      }
+    }
+
+    console.log(hoursWorked, employmentType, designerHoursWorked);
+
+    $(".employmentType .data").text(hoursWorked);
+    $(".hoursWorked .data").text(employmentType);
+  });
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
   let Engine = Matter.Engine,
     Render = Matter.Render,
-    Runner = Matter.Runner,
     World = Matter.World,
     Bodies = Matter.Bodies,
     Body = Matter.Body,

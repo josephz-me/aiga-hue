@@ -282,6 +282,7 @@ canvas {
 }
 .designerCard .data {
   justify-self: end;
+  text-align: right;
 }
 .designerCard .dependentData p {
   color: rgba(255, 255, 255, 0.5);
