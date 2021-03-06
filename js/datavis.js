@@ -42,8 +42,11 @@ $(function () {
     "My main priorities are:",
   ];
 
-  let chosenCareer = sessionStorage.getItem("career");
-  console.log(chosenCareer);
+  let careerBackend = sessionStorage.getItem("careerBackend");
+  let careerFrontend = sessionStorage.getItem("careerFrontend");
+  $("body").css("background", `${industries[careerFrontend].color}`);
+  $(".designerCard h1").text(`The ${careerFrontend}`);
+  console.log(careerBackend);
 
   $.getJSON("data.json", (data) => {
     let selectedDesigner = 0;
@@ -53,7 +56,7 @@ $(function () {
 
     //CAREER
     for (let designer in data) {
-      if (data[designer][questions[1]].includes(chosenCareer)) {
+      if (data[designer][questions[1]].includes(careerBackend)) {
         // selectedDesigner++;
         designersInCareer.push(data[designer]);
       }
@@ -90,39 +93,37 @@ $(function () {
     $(".employmentType .data").text(hoursWorked);
     $(".hoursWorked .data").text(employmentType);
 
-    // let salaries;
-    // for (designer in designerHoursWorked) {
-    // }
-
     //https://www.codegrepper.com/code-examples/javascript/how+to+count+duplicate+values+in+dictionary+javascript
     var salaries = {};
     designerHoursWorked.forEach(function (i) {
       salaries[i[questions[18]]] = (salaries[i[questions[18]]] || 0) + 1;
     });
 
-    let highestSalaryNum = 0;
-    let dominantSalary = "";
-    let dominantSalaryPercent;
-    console.log(salaries);
+    let highestSalaryFreq = 0;
+    let mostCommonSalary = "";
+    let mostCommonSalaryPercent;
+
     for (salary in salaries) {
-      if (highestSalaryNum === 0) {
-        highestSalaryNum = salaries[salary];
+      if (highestSalaryFreq === 0) {
+        highestSalaryFreq = salaries[salary];
       } else {
-        if (salaries[salary] > highestSalaryNum) {
-          highestSalaryNum = salaries[salary];
+        if (salaries[salary] > highestSalaryFreq) {
+          highestSalaryFreq = salaries[salary];
         }
       }
     }
-    dominantSalary = Object.keys(salaries).find(
-      (key) => salaries[key] === highestSalaryNum
+    mostCommonSalary = Object.keys(salaries).find(
+      (key) => salaries[key] === highestSalaryFreq
     );
-    console.log(highestSalaryNum, designerHoursWorked.length);
-    dominantSalaryPercent = Math.round(
-      (highestSalaryNum / designerHoursWorked.length) * 100
+
+    mostCommonSalaryPercent = Math.round(
+      (highestSalaryFreq / designerHoursWorked.length) * 100
     );
-    console.log(dominantSalaryPercent);
-    $("#salaryPercent").text(`${dominantSalaryPercent}%`);
-    $("#generatedSalary").text(`${dominantSalary.toLowerCase()}%`);
+
+    $("#salaryPercent").text(`${mostCommonSalaryPercent}%`);
+    $("#generatedSalary").text(`${mostCommonSalary.toLowerCase()}%`);
+    console.log(designerHoursWorked.length);
+    $("#totalDesignerNum").text(designerHoursWorked.length);
   });
 
   function getRandomInt(max) {
@@ -210,67 +211,6 @@ $(function () {
       },
     }
   );
-
-  let industries = {
-    "Graphic Designer": {
-      name: "Graphic Designer",
-      file: "graphic.png",
-      svg: "graphic-vector.svg",
-      color: "#6F39DF",
-      text: "graphic-text.png",
-      textSvg: "graphic-text-vector.svg",
-    },
-    "UX/UI Designer": {
-      name: "UX/UI Designer",
-      file: "uxui.png",
-      svg: "uxui-vector.svg",
-      // file: "UXUI.png",
-      color: "#5E96FF",
-      text: "uxui-text.png",
-      textSvg: "uxui-text-vector.svg",
-    },
-    Illustrator: {
-      name: "Illustrator",
-      file: "illustrator.png",
-      svg: "illustrator-vector.svg",
-      color: "#F2AE49",
-      text: "illustrator-text.png",
-      textSvg: "illustrator-text-vector.svg",
-    },
-    "Game Designer": {
-      name: "Game Designer",
-      file: "game.png",
-      svg: "game-vector.svg",
-      // file: "gameDesigner.png",
-      color: "#4ED07A",
-      text: "game-text.png",
-      textSvg: "game-text-vector.svg",
-    },
-    "AI Designer": {
-      name: "AI Designer",
-      file: "ai.png",
-      svg: "ai-vector.svg",
-      color: "#E25757",
-      text: "ai-text.png",
-      textSvg: "ai-text-vector.svg",
-    },
-    "Packaging Designer": {
-      name: "Packaging Designer",
-      file: "packaging.png",
-      svg: "packaging-vector.svg",
-      color: "#A9926F",
-      text: "packaging-text.png",
-      textSvg: "packaging-text-vector.svg",
-    },
-    "AR/VR Designer": {
-      name: "AR/VR Designer",
-      file: "arvr.png",
-      svg: "arvr-vector.svg",
-      color: "#39D8D8",
-      text: "arvr-text.png",
-      textSvg: "arvr-text-vector.svg",
-    },
-  };
 
   if (typeof fetch !== "undefined") {
     var select = function (root, selector) {
