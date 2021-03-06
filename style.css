@@ -1,30 +1,52 @@
 @font-face {
   font-family: "Recoleta";
-  src: url("fonts/Recoleta-Regular.woff2") format("woff2"), url("fonts/Recoleta-Regular.woff") format("woff");
+  src: url("fonts/Recoleta/Recoleta-Regular.woff2") format("woff2"), url("fonts/Recoleta/Recoleta-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Recoleta";
-  src: url("fonts/Recoleta-Medium.woff2") format("woff2"), url("fonts/Recoleta-Medium.woff") format("woff");
+  src: url("fonts/Recoleta/Recoleta-Medium.woff2") format("woff2"), url("fonts/Recoleta/Recoleta-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: "Recoleta";
-  src: url("fonts/Recoleta-SemiBold.woff2") format("woff2"), url("fonts/Recoleta-SemiBold.woff") format("woff");
+  src: url("fonts/Recoleta/Recoleta-SemiBold.woff2") format("woff2"), url("fonts/Recoleta/Recoleta-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "Recoleta";
-  src: url("fonts/Recoleta-Bold.woff2") format("woff2"), url("fonts/Recoleta-Bold.woff") format("woff");
+  src: url("fonts/Recoleta/Recoleta-Bold.woff2") format("woff2"), url("fonts/Recoleta/Recoleta-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
+@font-face {
+  font-family: "GT Flexa";
+  src: url("fonts/GT Flexa/GT-Flexa-Light-Trial.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GT Flexa";
+  src: url("fonts/GT Flexa/GT-Flexa-Regular-Trial.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GT Flexa";
+  src: url("fonts/GT Flexa/GT-Flexa-Medium-Trial.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GT Flexa";
+  src: url("fonts/GT Flexa/GT-Flexa-Bold-Trial.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
 * {
-  /* left: 0; */
-  top: 0;
   margin: 0;
 }
 
@@ -69,7 +91,6 @@ nav {
   color: white;
   font-weight: 600;
   position: absolute;
-  width: auto;
   right: 40px;
   top: 30px;
 }
@@ -96,19 +117,6 @@ a {
   width: auto;
 }
 
-.careers a {
-  font-family: "Recoleta";
-  font-size: 48px;
-  font-weight: 600;
-  transition: opacity 0.2s;
-  line-height: 1.3em;
-  padding: 0 40px 0 40px;
-  transition: background-color 0.2s, transform 0.1s;
-  opacity: 0;
-  animation: fadeIn 1s ease-in both;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-}
-
 .question {
   font-size: 24px;
   font-family: "Recoleta";
@@ -124,36 +132,42 @@ a {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
 }
 
-.careers a:hover {
-  transform: translateX(10px);
+.careers a {
+  font-family: "Recoleta";
+  font-size: 48px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+  line-height: 1.3em;
+  padding: 0 40px 0 40px;
+  transition: background-color 0.2s, transform 0.1s;
+  opacity: 0;
+  animation: fadeIn 1s ease-in both;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
-
 .careers a:nth-child(1) {
   animation-delay: 0.2s;
 }
-
 .careers a:nth-child(2) {
   animation-delay: 0.4s;
 }
-
 .careers a:nth-child(3) {
   animation-delay: 0.6s;
 }
-
 .careers a:nth-child(4) {
   animation-delay: 0.8s;
 }
-
 .careers a:nth-child(5) {
   animation-delay: 1s;
 }
-
 .careers a:nth-child(6) {
   animation-delay: 1.2s;
 }
-
 .careers a:nth-child(7) {
   animation-delay: 1.4s;
+}
+
+.careers a:hover {
+  transform: translateX(10px);
 }
 
 @keyframes fadeIn {
@@ -166,6 +180,121 @@ a {
 }
 canvas {
   z-index: -10;
+  top: 0;
+}
+
+.satisfactionData {
+  color: white;
+  top: 30px;
+  right: 40px;
+  position: fixed;
+}
+.satisfactionData b {
+  font-family: "recoleta";
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 200px;
+}
+.satisfactionData .responses p {
+  font-family: "GT Flexa";
+  font-weight: 300;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.returnHome {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  height: auto;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+}
+
+.button {
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  border-radius: 100px;
+  padding: 20px 60px 20px 60px;
+  font-family: "GT Flexa";
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  color: white;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.designerCard {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  background: yellow;
+  width: 471px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  color: white;
+  /* Note: backdrop-filter has minimal browser support */
+  padding: 30px;
+  border-radius: 20px;
+}
+.designerCard p,
+.designerCard b,
+.designerCard button {
+  font-family: "Gt Flexa";
+  color: white;
+}
+.designerCard p {
+  font-weight: 300;
+}
+.designerCard b {
+  font-size: 16px;
+}
+.designerCard .randomizeDesigner {
+  margin-top: 30px;
+  width: 100%;
+}
+.designerCard b {
+  font-weight: 500;
+}
+.designerCard h1 {
+  font-family: Recoleta;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 126.5%;
+  color: white;
+  margin-bottom: 20px;
+}
+.designerCard .category {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 5px 0 5px 0;
+}
+.designerCard .data {
+  justify-self: end;
+}
+.designerCard .dependentData p {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 20px 0 20px 0;
+}
+.designerCard .dependentData b {
+  color: rgba(255, 255, 255, 0.5);
+}
+.designerCard .dependentData span {
+  color: white;
+}
+.designerCard hr {
+  margin: 20px 0 20px 0;
 }
 
 /*# sourceMappingURL=style.css.map */
