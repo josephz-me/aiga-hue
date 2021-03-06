@@ -59,8 +59,6 @@ $(function () {
       }
     }
 
-    console.log(designersInCareer);
-
     //ORG SIZE
     let employmentType =
       designersInCareer[getRandomInt(designersInCareer.length)][questions[5]];
@@ -88,10 +86,43 @@ $(function () {
       }
     }
 
-    console.log(hoursWorked, employmentType, designerHoursWorked);
-
+    //generate in card UI
     $(".employmentType .data").text(hoursWorked);
     $(".hoursWorked .data").text(employmentType);
+
+    // let salaries;
+    // for (designer in designerHoursWorked) {
+    // }
+
+    //https://www.codegrepper.com/code-examples/javascript/how+to+count+duplicate+values+in+dictionary+javascript
+    var salaries = {};
+    designerHoursWorked.forEach(function (i) {
+      salaries[i[questions[18]]] = (salaries[i[questions[18]]] || 0) + 1;
+    });
+
+    let highestSalaryNum = 0;
+    let dominantSalary = "";
+    let dominantSalaryPercent;
+    console.log(salaries);
+    for (salary in salaries) {
+      if (highestSalaryNum === 0) {
+        highestSalaryNum = salaries[salary];
+      } else {
+        if (salaries[salary] > highestSalaryNum) {
+          highestSalaryNum = salaries[salary];
+        }
+      }
+    }
+    dominantSalary = Object.keys(salaries).find(
+      (key) => salaries[key] === highestSalaryNum
+    );
+    console.log(highestSalaryNum, designerHoursWorked.length);
+    dominantSalaryPercent = Math.round(
+      (highestSalaryNum / designerHoursWorked.length) * 100
+    );
+    console.log(dominantSalaryPercent);
+    $("#salaryPercent").text(`${dominantSalaryPercent}%`);
+    $("#generatedSalary").text(`${dominantSalary.toLowerCase()}%`);
   });
 
   function getRandomInt(max) {

@@ -291,7 +291,10 @@ canvas {
 .designerCard .dependentData b {
   color: rgba(255, 255, 255, 0.5);
 }
-.designerCard .dependentData span {
+.designerCard .dependentData #generatedData,
+.designerCard .dependentData #generatedSkills,
+.designerCard .dependentData #generatedBenefits,
+.designerCard .dependentData #generatedSalary {
   color: white;
 }
 .designerCard hr {
