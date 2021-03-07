@@ -45,11 +45,14 @@ $(function () {
   let careerBackend = sessionStorage.getItem("careerBackend");
   let careerFrontend = sessionStorage.getItem("careerFrontend");
   $("body").css("background", `${industries[careerFrontend].color}`);
+  $(".loadingScreen").css(
+    "background-color",
+    `${industries[careerFrontend].color}`
+  );
   $(".designerCard h1").text(`The ${careerFrontend}`);
   console.log(careerBackend);
 
   $.getJSON("data.json", (data) => {
-    let selectedDesigner = 0;
     let designersInCareer = [];
     let designerEmploymentType = [];
     let designerHoursWorked = [];
@@ -382,7 +385,7 @@ $(function () {
 const hideLoading = () => {
   setTimeout(() => {
     $(".loadingScreen").addClass("hideLoading");
-  }, 500);
+  }, 1200);
   setTimeout(() => {
     $(".loadingScreen").remove();
   }, 3000);

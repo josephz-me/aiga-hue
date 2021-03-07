@@ -262,7 +262,7 @@ $(function () {
 const hideLoading = () => {
   setTimeout(() => {
     $(".loadingScreen").addClass("hideLoading");
-  }, 500);
+  }, 1000);
   setTimeout(() => {
     $(".loadingScreen").remove();
   }, 3000);
