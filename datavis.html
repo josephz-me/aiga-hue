@@ -69,17 +69,29 @@ sass --watch style.scss:style.css
           profile:</b
         >
         <div class="responses">
-          <p>254 say they are happy, but there’s room for improvement (73%)</p>
-          <p>254 feel they are rock solid (73%)</p>
-          <p>254 are open to opportunities, but not actively looking (73%)</p>
+          <p class="iAm">
+            <span class="mostCommonElementPercent"></span> say "I am
+            <span class="mostCommonElement"></span>
+          </p>
+          <p class="iFeel">
+            <span class="mostCommonElementPercent"></span> feel "I am
+            <span class="mostCommonElement"></span>
+          </p>
+          <p class="ImCurrently">
+            <span class="mostCommonElementPercent"></span> say "I am
+            <span class="mostCommonElement"></span>
+          </p>
+
+          <!-- <p>254 are open to opportunities, but not actively looking (73%)</p> -->
         </div>
       </div>
       <a href="index.html" class="returnHome button">RETURN HOME</a>
     </main>
   </body>
   <!-- <script type="text/javascript" src="timescale.js"></script> -->
-  <script type="text/javascript" src="./js/datavis.js"></script>
-  <script type="text/javascript" src="./js/pathseg.js"></script>
   <script type="text/javascript" src="./js/variables.js"></script>
+  <script type="text/javascript" src="./js/sortData.js"></script>
+  <script type="text/javascript" src="./js/datavis-matter.js"></script>
+  <script type="text/javascript" src="./js/pathseg.js"></script>
   <!-- <script type="text/javascript" src="sift_data.js"></script> -->
 </html>

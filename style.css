@@ -222,9 +222,13 @@ canvas {
   font-weight: 400;
   display: block;
   cursor: pointer;
-  transition: background-color 0.1s;
+  transition: background-color 0.1s, transform 0.1s;
   color: white;
   text-align: center;
+}
+
+.button:hover {
+  transform: scale(0.98);
 }
 
 .button:hover {

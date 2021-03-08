@@ -58,3 +58,27 @@ let industries = {
     textSvg: "arvr-text-vector.svg",
   },
 };
+
+let satisfactionLevels = {
+  "I am:": {
+    "Ready to call it quits": "star-red.png",
+    "Not really satisfied, but I deal": "star-orange.png",
+    "Not sure": "star-gold.png",
+    "Happy, but there's room for improvement": "star-mustard.png",
+    "Extremely satisfied with my work situation": "star-yellow.png",
+  },
+  "I feel:": {
+    "I keep my things in a box": "heart-red.png",
+    "I'm a little concerned": "heart-orange.png",
+    "Not sure": "heart-gold.png",
+    "Fairly stable": "heart-mustard.png",
+    "Rock solid": "heart-yellow.png",
+  },
+  "I'm currently:": {
+    "Firing on all cylinders to find somoething new": "eye-red.png",
+    "Ready to make a move, but it’s not urgent": "eye-orange.png",
+    "Open to opportunities, but not actively looking": "eye-gold.png",
+    "Casually looking, if something pops up I might pursue": "eye-mustard.png",
+    "Happy to stay where I am": "eye-yellow.png",
+  },
+};
