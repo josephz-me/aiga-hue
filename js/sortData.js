@@ -41,16 +41,34 @@ $(function () {
     "I think the most critical design skills for the future will be:",
     "My main priorities are:",
   ];
+  let careerBackend;
+  let careerFrontend;
 
-  let careerBackend = sessionStorage.getItem("careerBackend");
-  let careerFrontend = sessionStorage.getItem("careerFrontend");
+  randomizeDesigner = () => {
+    careerFrontend = Object.keys(industries)[
+      getRandomInt(Object.keys(industries).length)
+    ];
+    careerBackend = industries[careerFrontend].backend;
+
+    console.log(careerFrontend);
+    sessionStorage.setItem("careerBackend", careerBackend);
+    sessionStorage.setItem("careerFrontend", careerFrontend);
+  };
+
+  if (sessionStorage.getItem("careerBackend") == null) {
+    randomizeDesigner();
+  } else {
+    careerBackend = sessionStorage.getItem("careerBackend");
+    careerFrontend = sessionStorage.getItem("careerFrontend");
+  }
+
+  $(".designerCard img").attr("src", `img/${industries[careerFrontend].file}`);
   $("body").css("background", `${industries[careerFrontend].color}`);
   $(".loadingScreen").css(
     "background-color",
     `${industries[careerFrontend].color}`
   );
   $(".designerCard h1").text(`The ${careerFrontend}`);
-  console.log(careerBackend);
 
   let selectedDesigners;
   let designersInCareer = [];
@@ -122,6 +140,8 @@ $(function () {
     $("#totalDesignerNum").text(selectedDesigners.length);
 
     //go through each person, check if they have one of top 5 skill, if yes log and move on
+
+    //MATTER JS CATEGORIES
 
     //satisfactionIAm
     let satisfactionIAm = {};

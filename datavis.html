@@ -27,6 +27,7 @@ sass --watch style.scss:style.css
     <!-- <div class="blur"></div> -->
     <main class="datavis">
       <div class="designerCard">
+        <img src="" />
         <h1></h1>
         <div class="independentData">
           <div class="employmentType category">
@@ -37,11 +38,12 @@ sass --watch style.scss:style.css
             <b>Employment Type</b>
             <p class="data"></p>
           </div>
-          <a class="button randomizeDesigner">Randomize Profile</a>
-          <!-- <div class="workSector category">
-            <b>Sector of Work</b>
-            <p class="data">For Profit</p>
-          </div> -->
+          <a
+            class="button randomizeDesigner"
+            href="datavis.html"
+            onclick="randomizeDesigner()"
+            >Randomize Profile</a
+          >
           <hr />
         </div>
 
@@ -67,60 +69,50 @@ sass --watch style.scss:style.css
         <hr />
       </div>
 
-      <!-- <div class="satisfactionData">
-        <b
-          >Of the <span id="totalDesignerNum">462</span> designers that fit this
-          profile:</b
-        >
-        <div class="responses">
-          <p class="iAm">
-            <span class="mostCommonElementPercent"></span> say "I am
-            <span class="mostCommonElement"></span>
-          </p>
-          <p class="iFeel">
-            <span class="mostCommonElementPercent"></span> feel "I am
-            <span class="mostCommonElement"></span>
-          </p>
-          <p class="ImCurrently">
-            <span class="mostCommonElementPercent"></span> say "I am
-            <span class="mostCommonElement"></span>
-          </p>
-
-        </div>
-      </div> -->
-
       <div class="columnData">
         <div class="column one">
           <div class="content">
-            <p class="data-question">Title 1</p>
-            <p class="answer">Answer</p>
-            <a class="button">next stat</a>
+            <p class="data-question">How happy are the designers?</p>
+            <p class="iAm data-answer">
+              <span class="mostCommonElementPercent"></span> feel "I am
+              <span class="mostCommonElement"></span>
+            </p>
+            <a class="button">shuffle</a>
           </div>
         </div>
         <div class="column two">
           <div class="content">
-            <p class="data-question">Title 1</p>
-            <p class="answer">Answer</p>
-            <!-- <a class="button">next stat</a> -->
+            <p class="data-question">Do they enjoy their career?</p>
+            <p class="data-answer ImCurrently">
+              <span class="mostCommonElementPercent"></span> say "I am
+              <span class="mostCommonElement"></span>
+            </p>
+            <a class="button">shuffle</a>
           </div>
         </div>
         <div class="column three">
           <div class="content">
-            <p class="data-question">Title 1</p>
-            <p class="answer">Answer</p>
-            <!-- <a class="button">next stat</a> -->
+            <p class="data-question">How secure do they feel?</p>
+
+            <p class="iFeel data-answer">
+              <span class="mostCommonElementPercent"></span> say "I am
+              <span class="mostCommonElement"></span>
+            </p>
+            <a class="button">shuffle</a>
           </div>
         </div>
         <div class="column four">
           <div class="content">
-            <p class="data-question">Title 1</p>
-            <p class="answer">Answer</p>
+            <p class="data-question">Are there opportunities?</p>
+            <p class="data-answer">Answer</p>
+            <a class="button">shuffle</a>
           </div>
         </div>
         <div class="column five">
           <div class="content">
-            <p class="data-question">Title 1</p>
-            <p class="answer">Answer</p>
+            <p class="data-question">What skills are they learning?</p>
+            <p class="data-answer">Answer</p>
+            <a class="button">shuffle</a>
           </div>
         </div>
       </div>

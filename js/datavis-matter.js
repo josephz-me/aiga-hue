@@ -58,15 +58,6 @@ let ceiling = Bodies.rectangle(
   }
 );
 
-$(function () {
-  $(".columnData .column")
-    .on("mouseenter", function () {
-      // console.log("entered");
-    })
-    .on("mouseleave", function () {
-      console.log("left");
-    });
-});
 //triggered behavior
 const startDataVis = (
   selectedDesigners,
@@ -255,9 +246,46 @@ const startDataVis = (
     },
   });
 
-  // setInterval(() => {
-  //   console.log(mouse.absolute.x);
-  // }, 200);
+  setInterval(() => {
+    // console.log(mouse.absolute.x);
+    let mouseX = mouse.absolute.x;
+    if (mouseX > 0 && mouseX < 400) {
+      if (!$(".one").hasClass("show")) {
+        $(".showButton").removeClass("showButton");
+        $(".show").removeClass("show");
+        $(".one").addClass("show");
+        $(".one .button").addClass("showButton");
+      }
+    } else if (mouseX > 400 && mouseX < 800) {
+      if (!$(".two").hasClass("show")) {
+        $(".showButton").removeClass("showButton");
+        $(".show").removeClass("show");
+        $(".two").addClass("show");
+        $(".two .button").addClass("showButton");
+      }
+    } else if (mouseX > 800 && mouseX < 1200) {
+      if (!$(".three").hasClass("show")) {
+        $(".showButton").removeClass("showButton");
+        $(".show").removeClass("show");
+        $(".three").addClass("show");
+        $(".three .button").addClass("showButton");
+      }
+    } else if (mouseX > 1200 && mouseX < 1600) {
+      if (!$(".four").hasClass("show")) {
+        $(".showButton").removeClass("showButton");
+        $(".show").removeClass("show");
+        $(".four").addClass("show");
+        $(".four .button").addClass("showButton");
+      }
+    } else if (mouseX > 1600 && mouseX < 2000) {
+      if (!$(".five").hasClass("show")) {
+        $(".showButton").removeClass("showButton");
+        $(".show").removeClass("show");
+        $(".five").addClass("show");
+        $(".five .button").addClass("showButton");
+      }
+    }
+  }, 100);
 
   mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
   mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);

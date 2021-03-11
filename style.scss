@@ -213,29 +213,6 @@ canvas {
   background: linear-gradient(270deg, #4686fc 0%, rgba(70, 134, 252, 0) 76.51%);
 }
 
-.satisfactionData {
-  color: white;
-  top: 30px;
-  right: 40px;
-  position: fixed;
-
-  b {
-    font-family: "recoleta";
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 200px;
-  }
-
-  .responses {
-    p {
-      font-family: "GT Flexa";
-      font-weight: 300;
-      font-size: 16px;
-      margin-top: 5px;
-    }
-  }
-}
-
 .returnHome {
   position: fixed;
   right: 30px;
@@ -262,11 +239,12 @@ canvas {
 }
 
 .button:hover {
-  transform: scale(0.98);
+  transform: scale(1.03);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.button:active {
+  transform: scale(0.98);
 }
 
 .designerCard {
@@ -277,7 +255,7 @@ canvas {
   height: 100vh;
   background: yellow;
   background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
@@ -285,6 +263,11 @@ canvas {
   /* Note: backdrop-filter has minimal browser support */
   padding: 30px;
 
+  img {
+    width: 20%;
+    height: auto;
+    margin-bottom: 10px;
+  }
   p,
   b,
   button {
@@ -361,6 +344,7 @@ canvas {
   // z-index: -1;
   display: grid;
   grid-template-columns: repeat(5, 400px);
+  transition: background-color 300ms;
 
   .content {
     margin-top: 112px;
@@ -376,11 +360,28 @@ canvas {
       opacity: 50%;
     }
 
+    .data-answer {
+      padding: 5px 60px;
+    }
+
+    .data-answer,
+    .data-question,
+    .button {
+      user-select: none; /* supported by Chrome and Opera */
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+    }
+
     .button {
       width: 200px;
       margin: 0 auto;
       margin-top: 25px;
       pointer-events: auto;
+      // visibility: hidden;
+      opacity: 0;
+      transition: background-color 0.1s, transform 0.1s, opacity 300ms;
     }
   }
 
@@ -390,6 +391,14 @@ canvas {
     height: 100vh;
   }
 }
-.column:hover {
-  background: rgba(255, 255, 255, 0.1);
+// .column:hover {
+//   background: rgba(255, 255, 255, 0.1);
+// }
+
+.show {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.showButton {
+  opacity: 1 !important;
 }

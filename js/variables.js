@@ -1,6 +1,7 @@
 let industries = {
   "Graphic Designer": {
     name: "Graphic Designer",
+    backend: "Graphic design",
     file: "graphic.png",
     svg: "graphic-vector.svg",
     color: "#6F39DF",
@@ -9,6 +10,7 @@ let industries = {
   },
   "UX/UI Designer": {
     name: "UX/UI Designer",
+    backend: "UX design",
     file: "uxui.png",
     svg: "uxui-vector.svg",
     color: "#5E96FF",
@@ -17,6 +19,7 @@ let industries = {
   },
   Illustrator: {
     name: "Illustrator",
+    backend: "Illustration",
     file: "illustrator.png",
     svg: "illustrator-vector.svg",
     color: "#F2AE49",
@@ -25,6 +28,7 @@ let industries = {
   },
   "Game Designer": {
     name: "Game Designer",
+    backend: "Game design",
     file: "game.png",
     svg: "game-vector.svg",
     // file: "gameDesigner.png",
@@ -34,6 +38,7 @@ let industries = {
   },
   "AI Designer": {
     name: "AI Designer",
+    backend: "AI / Algorithm design",
     file: "ai.png",
     svg: "ai-vector.svg",
     color: "#E25757",
@@ -42,6 +47,7 @@ let industries = {
   },
   "Packaging Designer": {
     name: "Packaging Designer",
+    backend: "Packaging design",
     file: "packaging.png",
     svg: "packaging-vector.svg",
     color: "#A9926F",
@@ -50,6 +56,7 @@ let industries = {
   },
   "AR/VR Designer": {
     name: "AR/VR Designer",
+    backend: "AR / VR design",
     file: "arvr.png",
     svg: "arvr-vector.svg",
     color: "#39D8D8",
@@ -80,13 +87,16 @@ let satisfactionLevels = {
   },
   "I feel:": {
     "I keep my things in a box": {
-      image: "heart.png",
+      image: "heart-01.png",
       svg: "heart-vector.svg",
     },
-    "I'm a little concerned": { image: "heart.png", svg: "heart-vector.svg" },
-    "Not sure": { image: "heart.png", svg: "heart-vector.svg" },
-    "Fairly stable": { image: "heart.png", svg: "heart-vector.svg" },
-    "Rock solid": { image: "heart.png", svg: "heart-vector.svg" },
+    "I'm a little concerned": {
+      image: "heart-02.png",
+      svg: "heart-vector.svg",
+    },
+    "Not sure": { image: "heart-03.png", svg: "heart-vector.svg" },
+    "Fairly stable": { image: "heart-04.png", svg: "heart-vector.svg" },
+    "Rock solid": { image: "heart-05.png", svg: "heart-vector.svg" },
   },
   "I'm currently:": {
     "Firing on all cylinders to find somoething new": {
