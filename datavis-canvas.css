@@ -1,0 +1,15 @@
+canvas {
+  z-index: 0;
+
+  overflow-y: scroll;
+  margin-left: 399px;
+}
+
+.designerCard {
+  width: 400px;
+}
+
+.columnData {
+  position: absolute;
+  margin-left: 400px;
+}

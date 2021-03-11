@@ -57,6 +57,7 @@ body {
   width: 100vw;
   background-color: #20232c;
   transition: background-color 0.3s;
+  overflow-y: hidden;
 }
 
 .loadingScreen {
@@ -90,9 +91,10 @@ nav {
   font-family: "Recoleta";
   color: white;
   font-weight: 600;
-  position: absolute;
+  position: fixed;
   right: 40px;
   top: 30px;
+  z-index: 10;
 }
 
 .landing {
@@ -179,8 +181,16 @@ a {
   }
 }
 canvas {
-  z-index: -10;
-  top: 0;
+  z-index: 0;
+}
+
+.blur {
+  position: fixed;
+  width: 215px;
+  height: 100vh;
+  right: 0px;
+  top: 0px;
+  background: linear-gradient(270deg, #4686fc 0%, rgba(70, 134, 252, 0) 76.51%);
 }
 
 .satisfactionData {
@@ -237,10 +247,11 @@ canvas {
 
 .designerCard {
   position: fixed;
-  top: 30px;
-  left: 30px;
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
   background: yellow;
-  width: 471px;
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
@@ -249,7 +260,6 @@ canvas {
   color: white;
   /* Note: backdrop-filter has minimal browser support */
   padding: 30px;
-  border-radius: 20px;
 }
 .designerCard p,
 .designerCard b,
@@ -280,13 +290,13 @@ canvas {
   margin-bottom: 20px;
 }
 .designerCard .category {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   margin: 5px 0 5px 0;
 }
+.designerCard .category:first-child {
+  margin-bottom: 12px;
+}
 .designerCard .data {
-  justify-self: end;
-  text-align: right;
+  text-decoration: underline;
 }
 .designerCard .dependentData p {
   color: rgba(255, 255, 255, 0.5);
@@ -302,7 +312,42 @@ canvas {
   color: white;
 }
 .designerCard hr {
-  margin: 20px 0 20px 0;
+  margin: 40px 0 40px 0;
+}
+
+.columnData {
+  height: 100vh;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(5, 400px);
+}
+.columnData .content {
+  margin-top: 112px;
+  color: white;
+}
+.columnData .content p {
+  font-family: "GT Flexa";
+  text-align: center;
+  font-weight: 300;
+  font-size: 16px;
+}
+.columnData .content .data-question {
+  opacity: 50%;
+}
+.columnData .content .button {
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 25px;
+  pointer-events: auto;
+}
+.columnData .column {
+  display: grid;
+  width: 400px;
+  height: 100vh;
+}
+
+.column:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /*# sourceMappingURL=style.css.map */

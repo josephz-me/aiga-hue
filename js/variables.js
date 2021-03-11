@@ -11,7 +11,6 @@ let industries = {
     name: "UX/UI Designer",
     file: "uxui.png",
     svg: "uxui-vector.svg",
-    // file: "UXUI.png",
     color: "#5E96FF",
     text: "uxui-text.png",
     textSvg: "uxui-text-vector.svg",
@@ -61,24 +60,54 @@ let industries = {
 
 let satisfactionLevels = {
   "I am:": {
-    "Ready to call it quits": "star-red.png",
-    "Not really satisfied, but I deal": "star-orange.png",
-    "Not sure": "star-gold.png",
-    "Happy, but there's room for improvement": "star-mustard.png",
-    "Extremely satisfied with my work situation": "star-yellow.png",
+    "Ready to call it quits": {
+      image: "star.png",
+      svg: "star-vector.svg",
+    },
+    "Not really satisfied, but I deal": {
+      image: "star.png",
+      svg: "star-vector.svg",
+    },
+    "Not sure": { image: "star.png", svg: "star-vector.svg" },
+    "Happy, but there's room for improvement": {
+      image: "star.png",
+      svg: "star-vector.svg",
+    },
+    "Extremely satisfied with my work situation": {
+      image: "star.png",
+      svg: "star-vector.svg",
+    },
   },
   "I feel:": {
-    "I keep my things in a box": "heart-red.png",
-    "I'm a little concerned": "heart-orange.png",
-    "Not sure": "heart-gold.png",
-    "Fairly stable": "heart-mustard.png",
-    "Rock solid": "heart-yellow.png",
+    "I keep my things in a box": {
+      image: "heart.png",
+      svg: "heart-vector.svg",
+    },
+    "I'm a little concerned": { image: "heart.png", svg: "heart-vector.svg" },
+    "Not sure": { image: "heart.png", svg: "heart-vector.svg" },
+    "Fairly stable": { image: "heart.png", svg: "heart-vector.svg" },
+    "Rock solid": { image: "heart.png", svg: "heart-vector.svg" },
   },
   "I'm currently:": {
-    "Firing on all cylinders to find somoething new": "eye-red.png",
-    "Ready to make a move, but it’s not urgent": "eye-orange.png",
-    "Open to opportunities, but not actively looking": "eye-gold.png",
-    "Casually looking, if something pops up I might pursue": "eye-mustard.png",
-    "Happy to stay where I am": "eye-yellow.png",
+    "Firing on all cylinders to find somoething new": {
+      image: "eye.png",
+      svg: "star-vector.svg",
+    },
+    "Ready to make a move, but it’s not urgent": {
+      image: "eye.png",
+      svg: "star-vector.svg",
+    },
+    "Open to opportunities, but not actively looking": {
+      image: "eye.png",
+      svg: "star-vector.svg",
+    },
+    "Casually looking, if something pops up I might pursue": {
+      image: "eye.png",
+      svg: "star-vector.svg",
+    },
+    "Happy to stay where I am": {
+      image: "eye.png",
+      svg: "star-vector.svg",
+    },
   },
 };
