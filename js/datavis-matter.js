@@ -63,8 +63,8 @@ const startDataVis = (
   selectedDesigners,
   mostCommonIFeel,
   mostCommonIFeelPercent,
-  mostCommonIam,
-  mostCommonIamPercent,
+  selectedIAmResponse,
+  selectedIAmResponsePercent,
   mostCommonImCurrently,
   mostCommonImCurrentlyPercent
 ) => {
@@ -80,31 +80,27 @@ const startDataVis = (
     );
   }
 
-  // let satisfyPercentages = {};
-  // satisfyPercentages[mostCommonIam] = mostCommonIamPercent;
-  // satisfyPercentages[mostCommonIFeel] = mostCommonIFeelPercent;
-  // satisfyPercentages[mostCommonImCurrently] = mostCommonImCurrentlyPercent;
+  let responses = [
+    [selectedIAmResponse, selectedIAmResponsePercent],
+    [mostCommonImCurrently, mostCommonImCurrentlyPercent],
+    [mostCommonIFeel, mostCommonIFeelPercent],
+  ];
 
   if (typeof fetch !== "undefined") {
-    var select = function (root, selector) {
-      return Array.prototype.slice.call(root.querySelectorAll(selector));
-    };
-    var loadSvg = function (url) {
-      return fetch(url)
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (raw) {
-          return new window.DOMParser().parseFromString(raw, "image/svg+xml");
-        });
-    };
-    for (let c = 0; c < 5; c++) {
-      for (let i = 0; i < 10; i++) {
+    for (let c = 0; c < Object.keys(satisfactionLevels).length; c++) {
+      let category = Object.keys(satisfactionLevels)[c];
+
+      //inside 'I am'
+
+      let bodyNum = Math.floor(responses[c][1] / 10);
+
+      console.log(satisfactionLevels[category][responses[c][0]]);
+      for (let i = 0; i < bodyNum; i++) {
         loadSvg(
           "./img/satisfactionIcons/" +
-            satisfactionLevels["I feel:"][mostCommonIFeel].svg
+            satisfactionLevels[category][responses[c][0]].svg
         ).then(function (root) {
-          let svgScale = Common.random(0.1, 0.25);
+          let svgScale = Common.random(0.2, 0.3);
           var vertexSets = select(root, "path").map(function (path) {
             return Vertices.scale(
               Svg.pathToVertices(path, 30),
@@ -115,13 +111,16 @@ const startDataVis = (
           World.add(
             engine.world,
             Bodies.fromVertices(
-              Common.random(200 + c * 400 - 20, 200 + c * 400 + 20),
+              Common.random(200 + c * 400 - 100, 200 + c * 400),
               Common.random(0, 10),
               vertexSets,
               {
+                column: c + 1,
                 render: {
                   sprite: {
-                    texture: `./img/satisfactionIcons/${satisfactionLevels["I feel:"][mostCommonIFeel].image}`,
+                    texture: `./img/satisfactionIcons/${
+                      satisfactionLevels[category][responses[c][0]].image
+                    }`,
                     xScale: svgScale / 1,
                     yScale: svgScale / 1,
                   },
@@ -133,110 +132,7 @@ const startDataVis = (
         });
       }
     }
-    // for (let i = 0; i < 60; i++) {
-    //   loadSvg(
-    //     "./img/satisfactionIcons/" +
-    //       satisfactionLevels["I am:"][mostCommonIam].svg
-    //   ).then(function (root) {
-    //     let svgScale = 0.13;
-    //     var vertexSets = select(root, "path").map(function (path) {
-    //       return Vertices.scale(
-    //         Svg.pathToVertices(path, 30),
-    //         svgScale,
-    //         svgScale
-    //       );
-    //     });
-    //     World.add(
-    //       engine.world,
-    //       Bodies.fromVertices(
-    //         Common.random(0, browserW),
-    //         Common.random(0, browserH / 2),
-    //         vertexSets,
-    //         {
-    //           render: {
-    //             sprite: {
-    //               texture: `./img/satisfactionIcons/${satisfactionLevels["I am:"][mostCommonIam].image}`,
-    //               xScale: svgScale / 1,
-    //               yScale: svgScale / 1,
-    //             },
-    //           },
-    //         },
-    //         true
-    //       )
-    //     );
-    //   });
   }
-
-  // for (let i = 0; i < 5; i++) {
-  //   loadSvg("./img/" + industries["UX/UI Designer"].svg).then(function (
-  //     root
-  //   ) {
-  //     let svgScale = 0.3;
-  //     var vertexSets = select(root, "path").map(function (path) {
-  //       return Vertices.scale(
-  //         Svg.pathToVertices(path, 30),
-  //         svgScale,
-  //         svgScale
-  //       );
-  //     });
-
-  //     World.add(
-  //       engine.world,
-  //       Bodies.fromVertices(
-  //         Common.random(0, browserW),
-  //         Common.random(0, browserH / 2),
-  //         vertexSets,
-  //         {
-  //           render: {
-  //             sprite: {
-  //               texture: `./img/${industries["UX/UI Designer"].file}`,
-  //               xScale: svgScale / 2,
-  //               yScale: svgScale / 2,
-  //             },
-  //           },
-  //         },
-  //         true
-  //       )
-  //     );
-  //   });
-  // }
-
-  // for (let i = 0; i < 20; i++) {
-  //   loadSvg(
-  //     "./img/satisfactionIcons/" +
-  //       satisfactionLevels["I'm currently:"][mostCommonImCurrently].svg
-  //   ).then(function (root) {
-  //     let svgScale = 0.1;
-  //     var vertexSets = select(root, "path").map(function (path) {
-  //       return Vertices.scale(
-  //         Svg.pathToVertices(path, 30),
-  //         svgScale,
-  //         svgScale
-  //       );
-  //     });
-
-  //     World.add(
-  //       engine.world,
-  //       Bodies.fromVertices(
-  //         Common.random(0, browserW),
-  //         Common.random(0, browserH / 2),
-  //         vertexSets,
-  //         {
-  //           render: {
-  //             sprite: {
-  //               texture: `./img/satisfactionIcons/${satisfactionLevels["I'm currently:"][mostCommonImCurrently].image}`,
-  //               xScale: svgScale / 1,
-  //               yScale: svgScale / 1,
-  //             },
-  //           },
-  //         },
-  //         true
-  //       )
-  //     );
-  //   });
-  // }
-  // }
-
   let mouse = Mouse.create(render.canvas);
   let mouseConstraint = MouseConstraint.create(engine, {
     mouse: mouse,
@@ -299,13 +195,69 @@ const startDataVis = (
   });
 
   render.mouse = mouse;
-  World.add(engine.world, [
-    // stack,
-    // leftWall,
-    ceiling,
-    ground,
-    mouseConstraint,
-  ]);
+  World.add(engine.world, [ceiling, ground, mouseConstraint]);
   Engine.run(engine);
   Render.run(render);
 };
+
+const replaceBodies = (columnNum, category, response, responsePercent) => {
+  let allBodies = Composite.allBodies(engine.world);
+  for (body in allBodies) {
+    let col = allBodies[body].column;
+    if (col === columnNum) {
+      Composite.remove(engine.world, allBodies[body]);
+    }
+  }
+  let newBodies = Math.floor(responsePercent / 10) * 1;
+  // let newBodies = Math.round(map(responsePercent, 0, 100, 5, 20));
+
+  for (let i = 0; i < newBodies; i++) {
+    loadSvg(
+      "./img/satisfactionIcons/" + satisfactionLevels[category][response].svg
+    ).then(function (root) {
+      let svgScale = Common.random(0.2, 0.3);
+      // let svgScale = Common.random(0.08, 0.2);
+      var vertexSets = select(root, "path").map(function (path) {
+        return Vertices.scale(Svg.pathToVertices(path, 30), svgScale, svgScale);
+      });
+      World.add(
+        engine.world,
+        Bodies.fromVertices(
+          Common.random(
+            200 + (columnNum - 1) * 400 - 100,
+            200 + (columnNum - 1) * 400
+          ),
+          Common.random(0, 100),
+          vertexSets,
+          {
+            column: satisfactionLevels[category][response].column,
+            render: {
+              sprite: {
+                texture: `./img/satisfactionIcons/${satisfactionLevels[category][response].image}`,
+                xScale: svgScale / 1,
+                yScale: svgScale / 1,
+              },
+            },
+          },
+          true
+        )
+      );
+    });
+  }
+};
+
+var select = function (root, selector) {
+  return Array.prototype.slice.call(root.querySelectorAll(selector));
+};
+var loadSvg = function (url) {
+  return fetch(url)
+    .then(function (response) {
+      return response.text();
+    })
+    .then(function (raw) {
+      return new window.DOMParser().parseFromString(raw, "image/svg+xml");
+    });
+};
+
+const map = (value, x1, y1, x2, y2) =>
+  ((value - x1) * (y2 - x2)) / (y1 - x1) + x2;

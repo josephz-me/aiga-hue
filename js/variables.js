@@ -68,56 +68,83 @@ let industries = {
 let satisfactionLevels = {
   "I am:": {
     "Ready to call it quits": {
-      image: "star.png",
-      svg: "star-vector.svg",
+      column: 1,
+      image: "smile-01.png",
+      svg: "smile-vector.svg",
     },
     "Not really satisfied, but I deal": {
-      image: "star.png",
-      svg: "star-vector.svg",
+      column: 1,
+      image: "smile-02.png",
+      svg: "smile-vector.svg",
     },
-    "Not sure": { image: "star.png", svg: "star-vector.svg" },
+    "Not sure": {
+      column: 1,
+      image: "smile-03.png",
+      svg: "smile-vector.svg",
+    },
     "Happy, but there's room for improvement": {
-      image: "star.png",
-      svg: "star-vector.svg",
+      column: 1,
+      image: "smile-04.png",
+      svg: "smile-vector.svg",
     },
     "Extremely satisfied with my work situation": {
-      image: "star.png",
+      column: 1,
+      image: "smile-05.png",
+      svg: "smile-vector.svg",
+    },
+  },
+  "I'm currently:": {
+    "Firing on all cylinders to find something new": {
+      column: 2,
+      image: "star-01.png",
+      svg: "star-vector.svg",
+    },
+    "Ready to make a move, but it’s not urgent": {
+      column: 2,
+      image: "star-02.png",
+      svg: "star-vector.svg",
+    },
+    "Open to opportunities, but not actively looking": {
+      column: 2,
+      image: "star-03.png",
+      svg: "star-vector.svg",
+    },
+    "Casually looking, if something pops up I might pursue": {
+      column: 2,
+      image: "star-04.png",
+      svg: "star-vector.svg",
+    },
+    "Happy to stay where I am": {
+      column: 2,
+      image: "star-05.png",
       svg: "star-vector.svg",
     },
   },
   "I feel:": {
     "I keep my things in a box": {
+      column: 3,
       image: "heart-01.png",
       svg: "heart-vector.svg",
     },
     "I'm a little concerned": {
+      column: 3,
       image: "heart-02.png",
       svg: "heart-vector.svg",
     },
-    "Not sure": { image: "heart-03.png", svg: "heart-vector.svg" },
-    "Fairly stable": { image: "heart-04.png", svg: "heart-vector.svg" },
-    "Rock solid": { image: "heart-05.png", svg: "heart-vector.svg" },
-  },
-  "I'm currently:": {
-    "Firing on all cylinders to find somoething new": {
-      image: "eye.png",
-      svg: "star-vector.svg",
+    "Not sure": {
+      column: 3,
+      image: "heart-03.png",
+      svg: "heart-vector.svg",
     },
-    "Ready to make a move, but it’s not urgent": {
-      image: "eye.png",
-      svg: "star-vector.svg",
+    "Fairly stable": {
+      column: 3,
+      image: "heart-04.png",
+      svg: "heart-vector.svg",
     },
-    "Open to opportunities, but not actively looking": {
-      image: "eye.png",
-      svg: "star-vector.svg",
-    },
-    "Casually looking, if something pops up I might pursue": {
-      image: "eye.png",
-      svg: "star-vector.svg",
-    },
-    "Happy to stay where I am": {
-      image: "eye.png",
-      svg: "star-vector.svg",
+    "Rock solid": {
+      column: 3,
+      image: "heart-05.png",
+      svg: "heart-vector.svg",
     },
   },
 };

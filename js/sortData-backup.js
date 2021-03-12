@@ -147,163 +147,81 @@ $(function () {
     let satisfactionIAm = {};
     tallyResponses(selectedDesigners, satisfactionIAm, 22);
 
-    const sortResponses = (unsorted) => {
-      let responsesArr = Object.entries(unsorted);
-      responsesArr.sort((a, b) => {
-        if (a[1] < b[1]) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-      return responsesArr;
-    };
+    let highestIAmFreq = 0;
+    let mostCommonIam = "";
+    let mostCommonIamPercent;
 
-    let IAmCounter = 0;
-    let responseIAmArr = sortResponses(satisfactionIAm);
-    let selectedIAmResponse = responseIAmArr[IAmCounter][0];
-    let selectedIAmResponsePercent = Math.round(
-      (responseIAmArr[IAmCounter][1] / Object.keys(selectedDesigners).length) *
-        100
+    let sortedIAmResponses = findHighestResponse(
+      satisfactionIAm,
+      highestIAmFreq,
+      mostCommonIam,
+      mostCommonIamPercent
     );
 
-    $(".iAm .mostCommonElement").text(`${selectedIAmResponse.toLowerCase()}"`);
-    $(".iAm .mostCommonElementPercent").text(`${selectedIAmResponsePercent}%`);
+    console.log(sortedIAmResponses);
+    highestIAmFreq = sortedIAmResponses.highestElementFreq;
+    mostCommonIam = sortedIAmResponses.mostCommonElement;
+    mostCommonIamPercent = sortedIAmResponses.mostCommonElementPercent;
 
-    $(".one .button").on("click", () => {
-      if (IAmCounter < 2) {
-        IAmCounter++;
-      } else {
-        IAmCounter = 0;
-      }
-
-      selectedIAmResponse = responseIAmArr[IAmCounter][0];
-      selectedIAmResponsePercent = Math.round(
-        (responseIAmArr[IAmCounter][1] /
-          Object.keys(selectedDesigners).length) *
-          100
-      );
-      $(".iAm .mostCommonElement").text(
-        `${selectedIAmResponse.toLowerCase()}"`
-      );
-      $(".iAm .mostCommonElementPercent").text(
-        `${selectedIAmResponsePercent}%`
-      );
-
-      replaceBodies(
-        1,
-        "I am:",
-        selectedIAmResponse,
-        selectedIAmResponsePercent
-      );
-    });
+    $(".iAm .mostCommonElement").text(`${mostCommonIam.toLowerCase()}"`);
+    $(".iAm .mostCommonElementPercent").text(`${mostCommonIamPercent}%`);
 
     //satisfactionIFeel
     let satisfactionIFeel = {};
     tallyResponses(selectedDesigners, satisfactionIFeel, 23);
 
-    let IFeelCounter = 0;
-    let responseIFeelArr = sortResponses(satisfactionIFeel);
-    let selectedIFeelResponse = responseIFeelArr[IFeelCounter][0];
-    let selectedIFeelResponsePercent = Math.round(
-      (responseIFeelArr[IAmCounter][1] /
-        Object.keys(selectedDesigners).length) *
-        100
+    let highestIFeelFreq = 0;
+    let mostCommonIFeel = "";
+    let mostCommonIFeelPercent;
+
+    let sortedIFeelResponses = findHighestResponse(
+      satisfactionIFeel,
+      highestIFeelFreq,
+      mostCommonIFeel,
+      mostCommonIFeelPercent
     );
+    highestIFeelFreq = sortedIFeelResponses.highestElementFreq;
+    mostCommonIFeel = sortedIFeelResponses.mostCommonElement;
+    mostCommonIFeelPercent = sortedIFeelResponses.mostCommonElementPercent;
 
-    $(".iFeel .mostCommonElement").text(
-      `${selectedIFeelResponse.toLowerCase()}"`
-    );
-    $(".iFeel .mostCommonElementPercent").text(
-      `${selectedIFeelResponsePercent}%`
-    );
+    $(".iFeel .mostCommonElement").text(`${mostCommonIFeel.toLowerCase()}"`);
+    $(".iFeel .mostCommonElementPercent").text(`${mostCommonIFeelPercent}%`);
 
-    $(".three .button").on("click", () => {
-      if (IFeelCounter < 2) {
-        IFeelCounter++;
-      } else {
-        IFeelCounter = 0;
-      }
-
-      selectedIFeelResponse = responseIFeelArr[IFeelCounter][0];
-      selectedIFeelResponsePercent = Math.round(
-        (responseIFeelArr[IFeelCounter][1] /
-          Object.keys(selectedDesigners).length) *
-          100
-      );
-      $(".iFeel .mostCommonElement").text(
-        `${selectedIFeelResponse.toLowerCase()}"`
-      );
-      $(".iFeel .mostCommonElementPercent").text(
-        `${selectedIFeelResponsePercent}%`
-      );
-
-      replaceBodies(
-        3,
-        "I feel:",
-        selectedIFeelResponse,
-        selectedIFeelResponsePercent
-      );
-    });
-
+    //satisfactionImCurrently
     let satisfactionImCurrently = {};
     tallyResponses(selectedDesigners, satisfactionImCurrently, 29);
 
-    let ImCurrentlyCounter = 0;
-    let responseImCurrentlyArr = sortResponses(satisfactionImCurrently);
-    let selectedImCurrentlyResponse =
-      responseImCurrentlyArr[ImCurrentlyCounter][0];
-    let selectedImCurrentlyResponsePercent = Math.round(
-      (responseImCurrentlyArr[IAmCounter][1] /
-        Object.keys(selectedDesigners).length) *
-        100
+    let highestImCurrentlyFreq = 0;
+    let mostCommonImCurrently = "";
+    let mostCommonImCurrentlyPercent;
+
+    let sortedImCurrentlyResponses = findHighestResponse(
+      satisfactionImCurrently,
+      highestImCurrentlyFreq,
+      mostCommonImCurrently,
+      mostCommonImCurrentlyPercent
     );
+    highestImCurrentlyFreq = sortedImCurrentlyResponses.highestElementFreq;
+    mostCommonImCurrently = sortedImCurrentlyResponses.mostCommonElement;
+    mostCommonImCurrentlyPercent =
+      sortedImCurrentlyResponses.mostCommonElementPercent;
 
-    $(".imCurrently .mostCommonElement").text(
-      `${selectedImCurrentlyResponse.toLowerCase()}"`
+    $(".ImCurrently .mostCommonElement").text(
+      `${mostCommonImCurrently.toLowerCase()}"`
     );
-    $(".imCurrently .mostCommonElementPercent").text(
-      `${selectedImCurrentlyResponsePercent}%`
+    $(".ImCurrently .mostCommonElementPercent").text(
+      `${mostCommonImCurrentlyPercent}%`
     );
-
-    $(".two .button").on("click", () => {
-      if (ImCurrentlyCounter < 2) {
-        ImCurrentlyCounter++;
-      } else {
-        ImCurrentlyCounter = 0;
-      }
-
-      selectedImCurrentlyResponse =
-        responseImCurrentlyArr[ImCurrentlyCounter][0];
-      selectedImCurrentlyResponsePercent = Math.round(
-        (responseImCurrentlyArr[ImCurrentlyCounter][1] /
-          Object.keys(selectedDesigners).length) *
-          100
-      );
-      $(".imCurrently .mostCommonElement").text(
-        `${selectedImCurrentlyResponse.toLowerCase()}"`
-      );
-      $(".imCurrently .mostCommonElementPercent").text(
-        `${selectedImCurrentlyResponsePercent}%`
-      );
-
-      replaceBodies(
-        2,
-        "I'm currently:",
-        selectedImCurrentlyResponse,
-        selectedImCurrentlyResponsePercent
-      );
-    });
 
     //TRIGGER MATTER JS
     startDataVis(
       selectedDesigners,
-      selectedIFeelResponse,
-      selectedIFeelResponsePercent,
-      selectedIAmResponse,
-      selectedIAmResponsePercent,
-      selectedImCurrentlyResponse,
-      selectedImCurrentlyResponsePercent
+      mostCommonIFeel,
+      mostCommonIFeelPercent,
+      mostCommonIam,
+      mostCommonIamPercent,
+      mostCommonImCurrently,
+      mostCommonImCurrentlyPercent
     );
   });
 
