@@ -66,7 +66,7 @@ let industries = {
 };
 
 let satisfactionLevels = {
-  "I am:": {
+  "I am:__1": {
     "Ready to call it quits": {
       column: 1,
       image: "smile-01.png",
@@ -145,6 +145,56 @@ let satisfactionLevels = {
       column: 3,
       image: "heart-05.png",
       svg: "heart-vector.svg",
+    },
+  },
+  "I have:": {
+    "Promising opportunities for advancement": {
+      column: 4,
+      image: "arrow-05.png",
+      svg: "arrow-vector.svg",
+    },
+    "Some opportunity for advancement": {
+      column: 4,
+      image: "arrow-04.png",
+      svg: "arrow-vector.svg",
+    },
+    "Limited opportunity for advancement": {
+      column: 4,
+      image: "arrow-03.png",
+      svg: "arrow-vector.svg",
+    },
+    "Not sure": {
+      column: 4,
+      image: "arrow-02.png",
+      svg: "arrow-vector.svg",
+    },
+    "No opportunity for advancement": {
+      column: 4,
+      image: "arrow-01.png",
+      svg: "arrow-vector.svg",
+    },
+  },
+  "I am:": {
+    "Learning and increasing my skill set every day": {
+      column: 5,
+      image: "gear-04.png",
+      svg: "gear-vector.svg",
+    },
+    "Learning some new skills": {
+      column: 5,
+      image: "gear-03.png",
+      svg: "gear-vector.svg",
+    },
+    "Learning very little": {
+      column: 5,
+      image: "gear-02.png",
+      svg: "gear-vector.svg",
+    },
+
+    "Learning nothing": {
+      column: 5,
+      image: "gear-01.png",
+      svg: "gear-vector.svg",
     },
   },
 };

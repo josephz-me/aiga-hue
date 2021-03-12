@@ -63,10 +63,14 @@ const startDataVis = (
   selectedDesigners,
   mostCommonIFeel,
   mostCommonIFeelPercent,
-  selectedIAmResponse,
-  selectedIAmResponsePercent,
+  selectedIAmTwoResponse,
+  selectedIAmTwoResponsePercent,
   mostCommonImCurrently,
-  mostCommonImCurrentlyPercent
+  mostCommonImCurrentlyPercent,
+  selectedIHaveResponse,
+  selectedIHaveResponsePercent,
+  selectedIAmResponse,
+  selectedIAmResponsePercent
 ) => {
   for (let i = 0; i < columnNum + 1; i++) {
     World.add(
@@ -81,9 +85,11 @@ const startDataVis = (
   }
 
   let responses = [
-    [selectedIAmResponse, selectedIAmResponsePercent],
+    [selectedIAmTwoResponse, selectedIAmTwoResponsePercent],
     [mostCommonImCurrently, mostCommonImCurrentlyPercent],
     [mostCommonIFeel, mostCommonIFeelPercent],
+    [selectedIHaveResponse, selectedIHaveResponsePercent],
+    [selectedIAmResponse, selectedIAmResponsePercent],
   ];
 
   if (typeof fetch !== "undefined") {
@@ -94,7 +100,6 @@ const startDataVis = (
 
       let bodyNum = Math.floor(responses[c][1] / 10);
 
-      console.log(satisfactionLevels[category][responses[c][0]]);
       for (let i = 0; i < bodyNum; i++) {
         loadSvg(
           "./img/satisfactionIcons/" +
@@ -143,7 +148,6 @@ const startDataVis = (
   });
 
   setInterval(() => {
-    // console.log(mouse.absolute.x);
     let mouseX = mouse.absolute.x;
     if (mouseX > 0 && mouseX < 400) {
       if (!$(".one").hasClass("show")) {

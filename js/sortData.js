@@ -50,7 +50,6 @@ $(function () {
     ];
     careerBackend = industries[careerFrontend].backend;
 
-    console.log(careerFrontend);
     sessionStorage.setItem("careerBackend", careerBackend);
     sessionStorage.setItem("careerFrontend", careerFrontend);
   };
@@ -143,9 +142,9 @@ $(function () {
 
     //MATTER JS CATEGORIES
 
-    //satisfactionIAm
-    let satisfactionIAm = {};
-    tallyResponses(selectedDesigners, satisfactionIAm, 22);
+    //satisfactionIAmTwo
+    let satisfactionIAmTwo = {};
+    tallyResponses(selectedDesigners, satisfactionIAmTwo, 22);
 
     const sortResponses = (unsorted) => {
       let responsesArr = Object.entries(unsorted);
@@ -159,90 +158,47 @@ $(function () {
       return responsesArr;
     };
 
-    let IAmCounter = 0;
-    let responseIAmArr = sortResponses(satisfactionIAm);
-    let selectedIAmResponse = responseIAmArr[IAmCounter][0];
-    let selectedIAmResponsePercent = Math.round(
-      (responseIAmArr[IAmCounter][1] / Object.keys(selectedDesigners).length) *
-        100
-    );
-
-    $(".iAm .mostCommonElement").text(`${selectedIAmResponse.toLowerCase()}"`);
-    $(".iAm .mostCommonElementPercent").text(`${selectedIAmResponsePercent}%`);
-
-    $(".one .button").on("click", () => {
-      if (IAmCounter < 2) {
-        IAmCounter++;
-      } else {
-        IAmCounter = 0;
-      }
-
-      selectedIAmResponse = responseIAmArr[IAmCounter][0];
-      selectedIAmResponsePercent = Math.round(
-        (responseIAmArr[IAmCounter][1] /
-          Object.keys(selectedDesigners).length) *
-          100
-      );
-      $(".iAm .mostCommonElement").text(
-        `${selectedIAmResponse.toLowerCase()}"`
-      );
-      $(".iAm .mostCommonElementPercent").text(
-        `${selectedIAmResponsePercent}%`
-      );
-
-      replaceBodies(
-        1,
-        "I am:",
-        selectedIAmResponse,
-        selectedIAmResponsePercent
-      );
-    });
-
-    //satisfactionIFeel
-    let satisfactionIFeel = {};
-    tallyResponses(selectedDesigners, satisfactionIFeel, 23);
-
-    let IFeelCounter = 0;
-    let responseIFeelArr = sortResponses(satisfactionIFeel);
-    let selectedIFeelResponse = responseIFeelArr[IFeelCounter][0];
-    let selectedIFeelResponsePercent = Math.round(
-      (responseIFeelArr[IAmCounter][1] /
+    let IAmTwoCounter = 0;
+    let responseIAmTwoArr = sortResponses(satisfactionIAmTwo);
+    let selectedIAmTwoResponse = responseIAmTwoArr[IAmTwoCounter][0];
+    let selectedIAmTwoResponsePercent = Math.round(
+      (responseIAmTwoArr[IAmTwoCounter][1] /
         Object.keys(selectedDesigners).length) *
         100
     );
 
-    $(".iFeel .mostCommonElement").text(
-      `${selectedIFeelResponse.toLowerCase()}"`
+    $(".iAmTwo .mostCommonElement").text(
+      `${selectedIAmTwoResponse.toLowerCase()}"`
     );
-    $(".iFeel .mostCommonElementPercent").text(
-      `${selectedIFeelResponsePercent}%`
+    $(".iAmTwo .mostCommonElementPercent").text(
+      `${selectedIAmTwoResponsePercent}%`
     );
 
-    $(".three .button").on("click", () => {
-      if (IFeelCounter < 2) {
-        IFeelCounter++;
+    $(".one .button").on("click", () => {
+      if (IAmTwoCounter < responseIAmTwoArr.length - 1) {
+        IAmTwoCounter++;
       } else {
-        IFeelCounter = 0;
+        IAmTwoCounter = 0;
       }
 
-      selectedIFeelResponse = responseIFeelArr[IFeelCounter][0];
-      selectedIFeelResponsePercent = Math.round(
-        (responseIFeelArr[IFeelCounter][1] /
+      selectedIAmTwoResponse = responseIAmTwoArr[IAmTwoCounter][0];
+      selectedIAmTwoResponsePercent = Math.round(
+        (responseIAmTwoArr[IAmTwoCounter][1] /
           Object.keys(selectedDesigners).length) *
           100
       );
-      $(".iFeel .mostCommonElement").text(
-        `${selectedIFeelResponse.toLowerCase()}"`
+      $(".iAmTwo .mostCommonElement").text(
+        `${selectedIAmTwoResponse.toLowerCase()}"`
       );
-      $(".iFeel .mostCommonElementPercent").text(
-        `${selectedIFeelResponsePercent}%`
+      $(".iAmTwo .mostCommonElementPercent").text(
+        `${selectedIAmTwoResponsePercent}%`
       );
 
       replaceBodies(
-        3,
-        "I feel:",
-        selectedIFeelResponse,
-        selectedIFeelResponsePercent
+        1,
+        "I am:__1",
+        selectedIAmTwoResponse,
+        selectedIAmTwoResponsePercent
       );
     });
 
@@ -254,7 +210,7 @@ $(function () {
     let selectedImCurrentlyResponse =
       responseImCurrentlyArr[ImCurrentlyCounter][0];
     let selectedImCurrentlyResponsePercent = Math.round(
-      (responseImCurrentlyArr[IAmCounter][1] /
+      (responseImCurrentlyArr[ImCurrentlyCounter][1] /
         Object.keys(selectedDesigners).length) *
         100
     );
@@ -295,15 +251,159 @@ $(function () {
       );
     });
 
+    //satisfactionIFeel
+    let satisfactionIFeel = {};
+    tallyResponses(selectedDesigners, satisfactionIFeel, 23);
+
+    let IFeelCounter = 0;
+    let responseIFeelArr = sortResponses(satisfactionIFeel);
+    let selectedIFeelResponse = responseIFeelArr[IFeelCounter][0];
+    let selectedIFeelResponsePercent = Math.round(
+      (responseIFeelArr[IFeelCounter][1] /
+        Object.keys(selectedDesigners).length) *
+        100
+    );
+
+    $(".iFeel .mostCommonElement").text(
+      `${selectedIFeelResponse.toLowerCase()}"`
+    );
+    $(".iFeel .mostCommonElementPercent").text(
+      `${selectedIFeelResponsePercent}%`
+    );
+
+    $(".three .button").on("click", () => {
+      if (IFeelCounter < responseIFeelArr.length - 1) {
+        IFeelCounter++;
+      } else {
+        IFeelCounter = 0;
+      }
+
+      selectedIFeelResponse = responseIFeelArr[IFeelCounter][0];
+      selectedIFeelResponsePercent = Math.round(
+        (responseIFeelArr[IFeelCounter][1] /
+          Object.keys(selectedDesigners).length) *
+          100
+      );
+      $(".iFeel .mostCommonElement").text(
+        `${selectedIFeelResponse.toLowerCase()}"`
+      );
+      $(".iFeel .mostCommonElementPercent").text(
+        `${selectedIFeelResponsePercent}%`
+      );
+
+      replaceBodies(
+        3,
+        "I feel:",
+        selectedIFeelResponse,
+        selectedIFeelResponsePercent
+      );
+    });
+
+    //iHave
+    let satisfactionIHave = {};
+    tallyResponses(selectedDesigners, satisfactionIHave, 20);
+
+    let IHaveCounter = 0;
+    let responseIHaveArr = sortResponses(satisfactionIHave);
+    let selectedIHaveResponse = responseIHaveArr[IHaveCounter][0];
+    let selectedIHaveResponsePercent = Math.round(
+      (responseIHaveArr[IHaveCounter][1] /
+        Object.keys(selectedDesigners).length) *
+        100
+    );
+
+    $(".iHave .mostCommonElement").text(
+      `${selectedIHaveResponse.toLowerCase()}"`
+    );
+    $(".iHave .mostCommonElementPercent").text(
+      `${selectedIHaveResponsePercent}%`
+    );
+
+    $(".four .button").on("click", () => {
+      if (IHaveCounter < responseIHaveArr.length - 1) {
+        IHaveCounter++;
+      } else {
+        IHaveCounter = 0;
+      }
+
+      selectedIHaveResponse = responseIHaveArr[IHaveCounter][0];
+      selectedIHaveResponsePercent = Math.round(
+        (responseIHaveArr[IHaveCounter][1] /
+          Object.keys(selectedDesigners).length) *
+          100
+      );
+      $(".iHave .mostCommonElement").text(
+        `${selectedIHaveResponse.toLowerCase()}"`
+      );
+      $(".iHave .mostCommonElementPercent").text(
+        `${selectedIHaveResponsePercent}%`
+      );
+
+      replaceBodies(
+        4,
+        "I have:",
+        selectedIHaveResponse,
+        selectedIHaveResponsePercent
+      );
+    });
+
+    //iAmTwo
+    let satisfactionIAm = {};
+    tallyResponses(selectedDesigners, satisfactionIAm, 21);
+
+    let IAmCounter = 0;
+    let responseIAmArr = sortResponses(satisfactionIAm);
+    let selectedIAmResponse = responseIAmArr[IAmCounter][0];
+    let selectedIAmResponsePercent = Math.round(
+      (responseIAmArr[IAmCounter][1] / Object.keys(selectedDesigners).length) *
+        100
+    );
+
+    $(".iAm .mostCommonElement").text(`${selectedIAmResponse.toLowerCase()}"`);
+    $(".iAm .mostCommonElementPercent").text(`${selectedIAmResponsePercent}%`);
+
+    console.log(responseIAmArr);
+    $(".five .button").on("click", () => {
+      if (IAmCounter < responseIAmArr.length - 1) {
+        IAmCounter++;
+      } else {
+        IAmCounter = 0;
+      }
+
+      selectedIAmResponse = responseIAmArr[IAmCounter][0];
+      selectedIAmResponsePercent = Math.round(
+        (responseIAmArr[IAmCounter][1] /
+          Object.keys(selectedDesigners).length) *
+          100
+      );
+      $(".iAm .mostCommonElement").text(
+        `${selectedIAmResponse.toLowerCase()}"`
+      );
+      $(".iAm .mostCommonElementPercent").text(
+        `${selectedIAmResponsePercent}%`
+      );
+
+      replaceBodies(
+        5,
+        "I am:",
+        selectedIAmResponse,
+        selectedIAmResponsePercent
+      );
+    });
+
     //TRIGGER MATTER JS
     startDataVis(
       selectedDesigners,
       selectedIFeelResponse,
       selectedIFeelResponsePercent,
-      selectedIAmResponse,
-      selectedIAmResponsePercent,
+      selectedIAmTwoResponse,
+      selectedIAmTwoResponsePercent,
       selectedImCurrentlyResponse,
-      selectedImCurrentlyResponsePercent
+      selectedImCurrentlyResponsePercent,
+      selectedIHaveResponse,
+      selectedIHaveResponsePercent,
+      selectedIAmResponse,
+      selectedIAmResponsePercent
     );
   });
 
