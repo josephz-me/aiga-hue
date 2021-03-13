@@ -99,7 +99,7 @@ let satisfactionLevels = {
       image: "star-01.png",
       svg: "star-vector.svg",
     },
-    "Ready to make a move, but it’s not urgent": {
+    "Ready to make a move, but it's not urgent": {
       column: 2,
       image: "star-02.png",
       svg: "star-vector.svg",

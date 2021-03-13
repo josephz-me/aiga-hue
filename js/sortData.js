@@ -223,7 +223,8 @@ $(function () {
     );
 
     $(".two .button").on("click", () => {
-      if (ImCurrentlyCounter < 2) {
+      console.log(ImCurrentlyCounter, responseImCurrentlyArr.length);
+      if (ImCurrentlyCounter < responseImCurrentlyArr.length - 1) {
         ImCurrentlyCounter++;
       } else {
         ImCurrentlyCounter = 0;
@@ -362,7 +363,6 @@ $(function () {
     $(".iAm .mostCommonElement").text(`${selectedIAmResponse.toLowerCase()}"`);
     $(".iAm .mostCommonElementPercent").text(`${selectedIAmResponsePercent}%`);
 
-    console.log(responseIAmArr);
     $(".five .button").on("click", () => {
       if (IAmCounter < responseIAmArr.length - 1) {
         IAmCounter++;

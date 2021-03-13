@@ -46,9 +46,9 @@ let ground = Bodies.rectangle(
   }
 );
 let ceiling = Bodies.rectangle(
-  browserW / 2,
-  -thickness / 2 - 2,
-  browserW,
+  (columnWidth * columnNum) / 2,
+  -thickness / 2 - 20,
+  columnWidth * columnNum,
   thickness,
   {
     isStatic: true,
@@ -120,6 +120,7 @@ const startDataVis = (
               Common.random(0, 10),
               vertexSets,
               {
+                restitution: 0.5,
                 column: c + 1,
                 render: {
                   sprite: {
@@ -213,7 +214,6 @@ const replaceBodies = (columnNum, category, response, responsePercent) => {
     }
   }
   let newBodies = Math.floor(responsePercent / 10) * 1;
-  // let newBodies = Math.round(map(responsePercent, 0, 100, 5, 20));
 
   for (let i = 0; i < newBodies; i++) {
     loadSvg(
@@ -265,3 +265,27 @@ var loadSvg = function (url) {
 
 const map = (value, x1, y1, x2, y2) =>
   ((value - x1) * (y2 - x2)) / (y1 - x1) + x2;
+
+$(".columnData .button").hover(
+  function () {
+    let desiredCol = parseInt($(this).attr("id"), 10);
+    let bodies = Composite.allBodies(engine.world);
+    for (body in bodies) {
+      if ("column" in bodies[body]) {
+        if (bodies[body].column === desiredCol) {
+          let forceMagnitude = 0.03 * bodies[body].mass;
+          Body.applyForce(bodies[body], bodies[body].position, {
+            x:
+              (forceMagnitude + Common.random() * forceMagnitude) *
+              Common.choose([1, -1]),
+            y: -forceMagnitude + 1 * -forceMagnitude,
+          });
+        }
+      }
+    }
+    // engine.world.gravity.y = 0.03;
+  },
+  function () {
+    // engine.world.gravity.y = 1;
+  }
+);

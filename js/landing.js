@@ -2,8 +2,6 @@ $(function () {
   $(".careers a").on("click", function () {
     let careerBackend = $(this).attr("id");
     let careerFrontend = $(this).text();
-    console.log(careerBackend);
-    console.log(careerFrontend);
     sessionStorage.setItem("careerBackend", careerBackend);
     sessionStorage.setItem("careerFrontend", careerFrontend);
   });

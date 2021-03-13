@@ -227,6 +227,13 @@ canvas {
   transform: scale(0.98);
 }
 
+.totalDesigner {
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0.5;
+  color: white;
+}
+
 .designerCard {
   position: fixed;
   z-index: 10;
@@ -274,7 +281,7 @@ canvas {
   font-size: 28px;
   line-height: 126.5%;
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .designerCard .category {
   margin: 5px 0 5px 0;
