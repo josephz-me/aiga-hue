@@ -58,6 +58,7 @@ body {
   background-color: #20232c;
   transition: background-color 0.3s;
   overflow-y: hidden;
+  overflow-x: auto;
 }
 
 .loadingScreen {
@@ -67,7 +68,6 @@ body {
   z-index: 100;
   top: 0;
   left: 0;
-  overflow-x: hidden;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -86,15 +86,24 @@ body {
   transition: 1s opacity;
 }
 
-nav {
-  font-size: 18px;
-  font-family: "Recoleta";
+p,
+a {
+  font-family: "GT Flexa";
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.logo {
   color: white;
-  font-weight: 600;
   position: fixed;
   right: 40px;
   top: 30px;
   z-index: 10;
+}
+.logo a {
+  font-size: 18px;
+  font-family: "Recoleta" !important;
+  font-weight: 600;
 }
 
 .landing {
@@ -182,6 +191,7 @@ a {
 }
 canvas {
   z-index: 0;
+  overflow-y: hidden;
 }
 
 .blur {
@@ -234,12 +244,22 @@ canvas {
   color: white;
 }
 
+.scrollable {
+  overflow-y: auto;
+  height: 1000px;
+  width: 100%;
+}
+
+.designerCard::-webkit-scrollbar {
+  width: 0;
+}
+
 .designerCard {
   position: fixed;
   z-index: 10;
   top: 0px;
   left: 0px;
-  height: 100vh;
+  height: 100%;
   background: yellow;
   background: rgba(0, 0, 0, 0.2);
   border-right: 1px solid rgba(255, 255, 255, 0.5);
@@ -309,6 +329,29 @@ canvas {
   margin: 40px 0 40px 0;
 }
 
+.portfolios {
+  padding-bottom: 50px;
+}
+.portfolios .title {
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: "Recoleta";
+  font-weight: 600;
+}
+.portfolios .profile {
+  margin: 3px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.portfolios .profile a {
+  justify-self: end;
+  text-decoration: underline;
+  opacity: 0.75;
+}
+.portfolios .responses {
+  margin-bottom: 40px;
+}
+
 .columnData {
   height: 100vh;
   pointer-events: none;
@@ -316,15 +359,12 @@ canvas {
   grid-template-columns: repeat(5, 400px);
   transition: background-color 300ms;
 }
+.columnData p {
+  text-align: center;
+}
 .columnData .content {
   margin-top: 112px;
   color: white;
-}
-.columnData .content p {
-  font-family: "GT Flexa";
-  text-align: center;
-  font-weight: 300;
-  font-size: 16px;
 }
 .columnData .content .data-question {
   opacity: 50%;
