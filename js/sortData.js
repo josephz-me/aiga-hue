@@ -94,34 +94,41 @@ $(function () {
       }
     }
 
-    //employment type
-    let employmentType =
-      designersInCareer[getRandomInt(designersInCareer.length)][questions[5]];
+    let numDesigners = 0;
+    let hoursWorked;
+    let employmentType;
+    const minThreshold = 15;
+    while (numDesigners < minThreshold) {
+      //employment type
+      employmentType =
+        designersInCareer[getRandomInt(designersInCareer.length)][questions[5]];
 
-    for (let designer in designersInCareer) {
-      if (designersInCareer[designer][questions[5]] === employmentType) {
-        designerEmploymentType.push(designersInCareer[designer]);
+      for (let designer in designersInCareer) {
+        if (designersInCareer[designer][questions[5]] === employmentType) {
+          designerEmploymentType.push(designersInCareer[designer]);
+        }
       }
-    }
 
-    //hours worked
-    let hoursWorked =
-      designerEmploymentType[[getRandomInt(designerEmploymentType.length)]][
-        questions[17]
-      ];
-    if (hoursWorked.includes("|")) {
-      hoursWorked = hoursWorked.substr(0, hoursWorked.indexOf("|"));
-    }
-
-    for (let designer in designerEmploymentType) {
-      if (
-        designerEmploymentType[designer][questions[17]].includes(hoursWorked)
-      ) {
-        designerHoursWorked.push(designerEmploymentType[designer]);
+      //hours worked
+      hoursWorked =
+        designerEmploymentType[[getRandomInt(designerEmploymentType.length)]][
+          questions[17]
+        ];
+      if (hoursWorked.includes("|")) {
+        hoursWorked = hoursWorked.substr(0, hoursWorked.indexOf("|"));
       }
-    }
 
-    selectedDesigners = [...designerHoursWorked];
+      for (let designer in designerEmploymentType) {
+        if (
+          designerEmploymentType[designer][questions[17]].includes(hoursWorked)
+        ) {
+          designerHoursWorked.push(designerEmploymentType[designer]);
+        }
+      }
+
+      selectedDesigners = [...designerHoursWorked];
+      numDesigners = selectedDesigners.length;
+    }
 
     // skills
 

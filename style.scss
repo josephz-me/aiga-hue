@@ -103,7 +103,7 @@ p,
 a {
   font-family: "GT Flexa";
   font-weight: 300;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .logo {
@@ -239,15 +239,29 @@ canvas {
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
   border-radius: 100px;
-  padding: 20px 60px 20px 60px;
+  padding: 17px 45px 17px 45px;
   font-family: "GT Flexa";
-  font-size: 16px;
+
+  font-size: 15px;
   font-weight: 400;
   display: block;
   cursor: pointer;
   transition: background-color 0.1s, transform 0.1s;
   color: white;
   text-align: center;
+}
+
+.quote {
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 30px;
+  background: rgba(255, 255, 255, 0.7);
+
+  color: #505050;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  z-index: 10;
 }
 
 .button:hover {
@@ -310,7 +324,7 @@ canvas {
   }
 
   b {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .randomizeDesigner {
@@ -428,7 +442,7 @@ canvas {
     }
 
     .button {
-      width: 200px;
+      width: 150px;
       margin: 0 auto;
       margin-top: 25px;
       pointer-events: auto;
