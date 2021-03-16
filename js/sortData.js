@@ -97,7 +97,7 @@ $(function () {
     let numDesigners = 0;
     let hoursWorked;
     let employmentType;
-    const minThreshold = 15;
+    const minThreshold = 10;
     while (numDesigners < minThreshold) {
       //employment type
       employmentType =
@@ -128,6 +128,7 @@ $(function () {
 
       selectedDesigners = [...designerHoursWorked];
       numDesigners = selectedDesigners.length;
+      console.log(numDesigners);
     }
 
     // skills
