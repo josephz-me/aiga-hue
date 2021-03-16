@@ -96,8 +96,38 @@ const startDataVis = (
     for (let c = 0; c < Object.keys(satisfactionLevels).length; c++) {
       let category = Object.keys(satisfactionLevels)[c];
 
-      //inside 'I am'
+      loadSvg("./img/satisfactionIcons/chat-vector.svg").then(function (root) {
+        let svgScale = 0.2;
+        var vertexSets = select(root, "path").map(function (path) {
+          return Vertices.scale(
+            Svg.pathToVertices(path, 30),
+            svgScale,
+            svgScale
+          );
+        });
+        World.add(
+          engine.world,
+          Bodies.fromVertices(
+            Common.random(200 + c * 400 - 100, 200 + c * 400),
+            Common.random(0, 10),
+            vertexSets,
+            {
+              restitution: 0.5,
+              column: c + 1,
+              render: {
+                sprite: {
+                  texture: `./img/satisfactionIcons/chat.png`,
+                  xScale: svgScale / 1,
+                  yScale: svgScale / 1,
+                },
+              },
+            },
+            true
+          )
+        );
+      });
 
+      //print satisfaction icons
       let bodyNum = Math.floor(responses[c][1] / 10);
 
       for (let i = 0; i < bodyNum; i++) {

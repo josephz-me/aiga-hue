@@ -74,6 +74,18 @@ $(function () {
   let designerEmploymentType = [];
   let designerHoursWorked = [];
 
+  const sortResponses = (unsorted) => {
+    let responsesArr = Object.entries(unsorted);
+    responsesArr.sort((a, b) => {
+      if (a[1] < b[1]) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    return responsesArr;
+  };
+
   $.getJSON("data.json", (data) => {
     //CAREER
     for (let designer in data) {
@@ -112,6 +124,88 @@ $(function () {
 
     selectedDesigners = [...designerHoursWorked];
 
+    // skills
+
+    // Create empty dict for counting skills
+
+    let countedSkills = {};
+    let countedBenefits = {};
+    for (designer in selectedDesigners) {
+      // currSkills is the array of skills of the current designer
+      let currSkills = selectedDesigners[designer][questions[3]].split("|");
+      let currBenefit = selectedDesigners[designer][questions[19]].split("|");
+      // count each of the skills
+      currSkills.forEach((skill) => {
+        if (countedSkills[skill] !== undefined) {
+          countedSkills[skill] += 1;
+        } else {
+          countedSkills[skill] = 1;
+        }
+      });
+
+      currBenefit.forEach((benefit) => {
+        if (countedBenefits[benefit] !== undefined) {
+          countedBenefits[benefit] += 1;
+        } else {
+          countedBenefits[benefit] = 1;
+        }
+      });
+    }
+    let sortedSkills = sortResponses(countedSkills);
+    let sortedBenefits = sortResponses(countedBenefits);
+    console.log(sortedBenefits);
+    console.log(sortedSkills);
+    $("#generatedSkills").text(
+      `${sortedSkills[0][0] ? sortedSkills[0][0] : ""},
+      ${sortedSkills[1][0] ? sortedSkills[1][0] : ""},
+      ${sortedSkills[2][0] ? sortedSkills[2][0] : ""},
+      ${sortedSkills[3][0] ? sortedSkills[3][0] : ""}`
+    );
+    $("#generatedBenefits").text(
+      `${sortedBenefits[0][0] ? sortedBenefits[0][0] : ""},
+      ${sortedBenefits[1][0] ? sortedBenefits[1][0] : ""},
+      ${sortedBenefits[2][0] ? sortedBenefits[2][0] : ""},
+      ${sortedBenefits[3][0] ? sortedBenefits[3][0] : ""}`
+    );
+
+    let peopleWithSkills = 0;
+    let peopleWithSkillsPercent = 0;
+    let peopleWithBenefitsPercent = 0;
+    let peopleWithBenefits = 0;
+    for (designer in selectedDesigners) {
+      if (
+        selectedDesigners[designer][questions[3]].includes(
+          sortedSkills[0][0] ||
+            sortedSkills[0][1] ||
+            sortedSkills[0][2] ||
+            sortedSkills[0][3]
+        )
+      ) {
+        peopleWithSkills++;
+      }
+
+      if (
+        selectedDesigners[designer][questions[19]].includes(
+          sortedBenefits[0][0] ||
+            sortedBenefits[0][1] ||
+            sortedBenefits[0][2] ||
+            sortedBenefits[0][3]
+        )
+      ) {
+        peopleWithBenefits++;
+      }
+    }
+    console.log(peopleWithBenefits);
+
+    peopleWithSkillsPercent = Math.trunc(
+      (peopleWithSkills / selectedDesigners.length) * 100
+    );
+    peopleWithBenefitsPercent = Math.trunc(
+      (peopleWithBenefits / selectedDesigners.length) * 100
+    );
+    $("#skillsPercent").text(`${peopleWithSkillsPercent}%`);
+    $("#benefitsPercent").text(`${peopleWithBenefitsPercent}%`);
+
     //generate in card UI
     $(".employmentType .data").text(hoursWorked);
     $(".hoursWorked .data").text(employmentType);
@@ -134,8 +228,8 @@ $(function () {
     mostCommonSalaryPercent = sortedResponses.mostCommonElementPercent;
 
     //inject into UI card
+    $("#generatedSalary").text(`${mostCommonSalary.toLowerCase()}`);
     $("#salaryPercent").text(`${mostCommonSalaryPercent}%`);
-    $("#generatedSalary").text(`${mostCommonSalary.toLowerCase()}%`);
     $("#totalDesignerNum").text(selectedDesigners.length);
 
     //go through each person, check if they have one of top 5 skill, if yes log and move on
@@ -145,18 +239,6 @@ $(function () {
     //satisfactionIAmTwo
     let satisfactionIAmTwo = {};
     tallyResponses(selectedDesigners, satisfactionIAmTwo, 22);
-
-    const sortResponses = (unsorted) => {
-      let responsesArr = Object.entries(unsorted);
-      responsesArr.sort((a, b) => {
-        if (a[1] < b[1]) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-      return responsesArr;
-    };
 
     let IAmTwoCounter = 0;
     let responseIAmTwoArr = sortResponses(satisfactionIAmTwo);
@@ -223,7 +305,6 @@ $(function () {
     );
 
     $(".two .button").on("click", () => {
-      console.log(ImCurrentlyCounter, responseImCurrentlyArr.length);
       if (ImCurrentlyCounter < responseImCurrentlyArr.length - 1) {
         ImCurrentlyCounter++;
       } else {
