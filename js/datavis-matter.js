@@ -135,7 +135,7 @@ const startDataVis = (
           "./img/satisfactionIcons/" +
             satisfactionLevels[category][responses[c][0]].svg
         ).then(function (root) {
-          let svgScale = Common.random(0.2, 0.3);
+          let svgScale = Common.random(0.17, 0.27);
           var vertexSets = select(root, "path").map(function (path) {
             return Vertices.scale(
               Svg.pathToVertices(path, 30),

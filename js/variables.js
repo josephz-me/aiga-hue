@@ -177,30 +177,30 @@ let satisfactionLevels = {
   "I am:": {
     "Learning and increasing my skill set every day": {
       column: 5,
-      image: "gear-05.png",
-      svg: "gear-vector.svg",
+      image: "bulb-05.png",
+      svg: "bulb-vector.svg",
     },
     "Learning some new skills": {
       column: 5,
-      image: "gear-04.png",
-      svg: "gear-vector.svg",
+      image: "bulb-04.png",
+      svg: "bulb-vector.svg",
     },
     "Learning very little": {
       column: 5,
-      image: "gear-03.png",
-      svg: "gear-vector.svg",
+      image: "bulb-03.png",
+      svg: "bulb-vector.svg",
     },
 
     "Not sure": {
       column: 5,
-      image: "gear-02.png",
-      svg: "gear-vector.svg",
+      image: "bulb-02.png",
+      svg: "bulb-vector.svg",
     },
 
     "Learning nothing": {
       column: 5,
-      image: "gear-01.png",
-      svg: "gear-vector.svg",
+      image: "bulb-01.png",
+      svg: "bulb-vector.svg",
     },
   },
 };
