@@ -61,6 +61,18 @@ $(function () {
     careerFrontend = sessionStorage.getItem("careerFrontend");
   }
 
+  const sortResponses = (unsorted) => {
+    let responsesArr = Object.entries(unsorted);
+    responsesArr.sort((a, b) => {
+      if (a[1] < b[1]) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    return responsesArr;
+  };
+
   $(".designerCard img").attr("src", `img/${industries[careerFrontend].file}`);
   $("body").css("background", `${industries[careerFrontend].color}`);
   $(".loadingScreen").css(
@@ -74,23 +86,10 @@ $(function () {
   let designerEmploymentType = [];
   let designerHoursWorked = [];
 
-  const sortResponses = (unsorted) => {
-    let responsesArr = Object.entries(unsorted);
-    responsesArr.sort((a, b) => {
-      if (a[1] < b[1]) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-    return responsesArr;
-  };
-
   $.getJSON("data.json", (data) => {
     //CAREER
     for (let designer in data) {
       if (data[designer][questions[1]].includes(careerBackend)) {
-        // selectedDesigner++;
         designersInCareer.push(data[designer]);
       }
     }
@@ -153,8 +152,7 @@ $(function () {
     }
     let sortedSkills = sortResponses(countedSkills);
     let sortedBenefits = sortResponses(countedBenefits);
-    console.log(sortedBenefits);
-    console.log(sortedSkills);
+
     $("#generatedSkills").text(
       `${sortedSkills[0][0] ? sortedSkills[0][0] : ""},
       ${sortedSkills[1][0] ? sortedSkills[1][0] : ""},
@@ -195,7 +193,6 @@ $(function () {
         peopleWithBenefits++;
       }
     }
-    console.log(peopleWithBenefits);
 
     peopleWithSkillsPercent = Math.trunc(
       (peopleWithSkills / selectedDesigners.length) * 100
