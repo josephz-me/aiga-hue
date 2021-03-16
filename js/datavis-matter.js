@@ -113,7 +113,6 @@ const startDataVis = (
             vertexSets,
             {
               restitution: 0.5,
-              column: c + 1,
               render: {
                 sprite: {
                   texture: `./img/satisfactionIcons/chat.png`,
