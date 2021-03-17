@@ -18,76 +18,77 @@ sass --watch style.scss:style.css
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous"
     ></script>
-    <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
   </head>
   <body>
     <div class="loadingScreen">Generating Designer Profile...</div>
 
-    <nav class="logo"><a href="">AIGA & Hue</a></nav>
+    <nav class="logo"><a href="index.html">AIGA & Hue</a></nav>
     <!-- <div class="blur"></div> -->
     <main class="datavis">
       <div class="designerCard scrollable">
         <!-- <div class=""> -->
-          <img src="" />
-          <h1></h1>
-          <p class="totalDesigner">
-            <span id="totalDesignerNum"></span> / 9430 designers fit this
-            profile.
+        <img src="" />
+        <h1></h1>
+
+        <p id="careerBio">
+          UI/UX Designers are responsible for the design and implementation of
+          all the experiences a user has when interacting with a digital tool,
+          such as a website.
+        </p>
+        <hr />
+        <p class="totalDesigner">
+          <span id="totalDesignerNum"></span> / 9430 designers fit this profile.
+        </p>
+        <br />
+        <div class="independentData">
+          <div class="employmentType category">
+            <p class="data-question">Working hours per week:</p>
+            <p class="data"></p>
+          </div>
+          <div class="hoursWorked category">
+            <p class="data-question">Employment Type</p>
+            <p class="data"></p>
+          </div>
+          <a
+            class="button randomizeDesigner"
+            href="datavis.html"
+            onclick="randomizeDesigner()"
+            >randomize profile</a
+          >
+          <!-- <hr /> -->
+        </div>
+
+        <div class="dependentData">
+          <p>
+            <span id="salaryPercent"></span> have <b>salaries</b> of
+            <span id="generatedSalary"></span><br /><br />
           </p>
+          <p><span id="skillsPercent"></span> have <b>skills</b> including</p>
+          <p id="generatedSkills"></p>
           <br />
-          <div class="independentData">
-            <div class="employmentType category">
-              <b>Working Hours per week</b>
-              <p class="data"></p>
-            </div>
-            <div class="hoursWorked category">
-              <b>Employment Type</b>
-              <p class="data"></p>
-            </div>
-            <a
-              class="button randomizeDesigner"
-              href="datavis.html"
-              onclick="randomizeDesigner()"
-              >randomize profile</a
-            >
-            <hr />
-          </div>
+          <p>
+            <span id="benefitsPercent"></span> enjoy <b>benefits</b> such as<br />
+          </p>
+          <p id="generatedBenefits">
+            Paid time off, paid parental leave, medica/dental insurance
+          </p>
+        </div>
 
-          <div class="dependentData">
-            <p>
-              <span id="salaryPercent"></span> have <b>salaries</b> of
-              <span id="generatedSalary"></span>
-            </p>
-            <p>
-              <span id="skillsPercent"></span> have <b>skills</b> including<br />
-              <span id="generatedSkills"></span
-              >
-            </p>
-            <p>
-              <span id="benefitsPercent"></span> enjoy <b>benefits</b> such as<br />
-              <span id="generatedBenefits"
-                >Paid time off, paid parental leave, medica/dental
-                insurance</span
-              >
-            </p>
-          </div>
+        <!-- <hr /> -->
 
-          <hr />
-
-          <div class="portfolios">
-            <p class="title">Relevant Portfolios</p>
-            <div class="responses">
-              <div class='profile'>
-                <p>Joseph Zhang</p>
-                <a href="">www.josephz.me</a>
-              </div>
-              <div class='profile'>
-                <p>Joseph Zhang</p>
-                <a href="">www.josephz.me</a>
-              </div>
+        <div class="portfolios">
+          <p class="title">Relevant Portfolios</p>
+          <div class="responses">
+            <div class="profile">
+              <p>Joseph Zhang</p>
+              <a href="">www.josephz.me</a>
             </div>
-            <a class="button">submit your own</a>
+            <div class="profile">
+              <p>Joseph Zhang</p>
+              <a href="">www.josephz.me</a>
+            </div>
           </div>
+          <a class="button">submit your own</a>
         </div>
       </div>
 
@@ -100,9 +101,10 @@ sass --watch style.scss:style.css
               <span class="mostCommonElement"></span>
             </p>
             <a class="button" id="1">next</a>
-            <!-- <p class = 'quote'>
-              “I feel the most critical issues facing design are design's role in consumerism”
-            </p> -->
+            <p class="quote-1 quote">
+              “I feel the most critical issues facing design are design's role
+              in consumerism”
+            </p>
           </div>
         </div>
         <div class="column two">
@@ -113,6 +115,10 @@ sass --watch style.scss:style.css
               <span class="mostCommonElement"></span>
             </p>
             <a class="button" id="2">next</a>
+            <p class="quote-2 quote">
+              “I feel the most critical issues facing design are design's role
+              in consumerism”
+            </p>
           </div>
         </div>
         <div class="column three">
@@ -124,6 +130,10 @@ sass --watch style.scss:style.css
               <span class="mostCommonElement"></span>
             </p>
             <a class="button" id="3">next</a>
+            <p class="quote-3 quote">
+              “I feel the most critical issues facing design are design's role
+              in consumerism”
+            </p>
           </div>
         </div>
         <div class="column four">
@@ -134,6 +144,10 @@ sass --watch style.scss:style.css
               <span class="mostCommonElement"></span>
             </p>
             <a class="button" id="4">next</a>
+            <p class="quote-4 quote">
+              “I feel the most critical issues facing design are design's role
+              in consumerism”
+            </p>
           </div>
         </div>
         <div class="column five">
@@ -144,17 +158,19 @@ sass --watch style.scss:style.css
               <span class="mostCommonElement"></span>
             </p>
             <a class="button" id="5">next</a>
+            <p class="quote-5 quote">
+              “I feel the most critical issues facing design are design's role
+              in consumerism”
+            </p>
           </div>
         </div>
       </div>
-      <a href="index.html" class="returnHome button">return home</a>
     </main>
   </body>
-  <!-- <script type="text/javascript" src="timescale.js"></script> -->
+
   <script type="text/javascript" src="./js/variables.js"></script>
   <script type="text/javascript" src="./js/sortData.js"></script>
   <script type="text/javascript" src="./js/datavis-matter.js"></script>
   <script type="text/javascript" src="./js/pathseg.js"></script>
   <script type="text/javascript" src="./js/generatePortfolios.js"></script>
-  <!-- <script type="text/javascript" src="sift_data.js"></script> -->
 </html>

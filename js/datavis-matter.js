@@ -96,36 +96,40 @@ const startDataVis = (
     for (let c = 0; c < Object.keys(satisfactionLevels).length; c++) {
       let category = Object.keys(satisfactionLevels)[c];
 
-      loadSvg("./img/satisfactionIcons/chat-vector.svg").then(function (root) {
-        let svgScale = 0.2;
-        var vertexSets = select(root, "path").map(function (path) {
-          return Vertices.scale(
-            Svg.pathToVertices(path, 30),
-            svgScale,
-            svgScale
-          );
-        });
-        World.add(
-          engine.world,
-          Bodies.fromVertices(
-            Common.random(200 + c * 400 - 100, 200 + c * 400),
-            Common.random(0, 10),
-            vertexSets,
-            {
-              restitution: 0.5,
-              chatCol: c + 1,
-              render: {
-                sprite: {
-                  texture: `./img/satisfactionIcons/chat.png`,
-                  xScale: svgScale / 1,
-                  yScale: svgScale / 1,
+      if (c + 1 > 1 && c + 1 < 5) {
+        loadSvg("./img/satisfactionIcons/chat-vector.svg").then(function (
+          root
+        ) {
+          let svgScale = 0.2;
+          var vertexSets = select(root, "path").map(function (path) {
+            return Vertices.scale(
+              Svg.pathToVertices(path, 30),
+              svgScale,
+              svgScale
+            );
+          });
+          World.add(
+            engine.world,
+            Bodies.fromVertices(
+              200 + c * 400,
+              Common.random(0, 10),
+              vertexSets,
+              {
+                restitution: 0.5,
+                quoteCol: "quote-" + (c + 1),
+                render: {
+                  sprite: {
+                    texture: `./img/satisfactionIcons/chat-inactive.png`,
+                    xScale: svgScale / 1,
+                    yScale: svgScale / 1,
+                  },
                 },
               },
-            },
-            true
-          )
-        );
-      });
+              true
+            )
+          );
+        });
+      }
 
       //print satisfaction icons
       let bodyNum = Math.floor(responses[c][1] / 10);
@@ -222,10 +226,20 @@ const startDataVis = (
   mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
 
   Matter.Events.on(mouseConstraint, "mousedown", function () {
-    let body = mouseConstraint.body;
-    if (body !== null) {
-    } else {
-      return;
+    if (this.body !== null) {
+      let body = mouseConstraint.body;
+      if ("quoteCol" in body) {
+        let desiredQuote = $(`.${body.quoteCol}`);
+        body.render.sprite.texture = "./img/satisfactionIcons/chat-active.png";
+        $(desiredQuote).addClass("showQuote");
+        setTimeout(() => {
+          $(desiredQuote.removeClass("showQuote"));
+          // body.render.sprite.texture =
+          //   "./img/satisfactionIcons/chat-inactive.png";
+        }, 6000);
+      } else {
+        console.log("not a chat bubble");
+      }
     }
   });
 
@@ -244,6 +258,9 @@ const replaceBodies = (columnNum, category, response, responsePercent) => {
     }
   }
   let newBodies = Math.floor(responsePercent / 10) * 1;
+  if (newBodies < 1) {
+    newBodies++;
+  }
 
   for (let i = 0; i < newBodies; i++) {
     loadSvg(

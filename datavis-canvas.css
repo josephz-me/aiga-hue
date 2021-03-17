@@ -2,14 +2,14 @@ canvas {
   z-index: 0;
 
   overflow-y: scroll;
-  margin-left: 399px;
+  margin-left: 379px;
 }
 
 .designerCard {
-  width: 400px;
+  width: 380px;
 }
 
 .columnData {
   position: absolute;
-  margin-left: 400px;
+  margin-left: 380px;
 }

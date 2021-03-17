@@ -118,6 +118,12 @@ a {
     font-size: 18px;
     font-family: "Recoleta" !important;
     font-weight: 600;
+    cursor: help;
+    transition: 0.2s opacity;
+  }
+
+  a:hover {
+    opacity: 0.5;
   }
 }
 
@@ -225,13 +231,11 @@ canvas {
   background: linear-gradient(270deg, #4686fc 0%, rgba(70, 134, 252, 0) 76.51%);
 }
 
-.returnHome {
+.about {
   position: fixed;
   right: 30px;
   bottom: 30px;
   height: auto;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
 }
 
 .button {
@@ -241,7 +245,8 @@ canvas {
   border-radius: 100px;
   padding: 17px 45px 17px 45px;
   font-family: "GT Flexa";
-
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   font-size: 15px;
   font-weight: 400;
   display: block;
@@ -251,17 +256,29 @@ canvas {
   text-align: center;
 }
 
-.quote {
+.quote-1,
+.quote-2,
+.quote-3,
+.quote-4,
+.quote-5 {
   text-align: center;
   border-radius: 20px;
   padding: 20px;
   margin: 30px;
-  background: rgba(255, 255, 255, 0.7);
-
-  color: #505050;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0;
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
   z-index: 10;
+  transition: opacity 0.5s;
+}
+
+.quote {
+  color: blue;
+}
+
+.showQuote {
+  opacity: 1;
 }
 
 .button:hover {
@@ -295,7 +312,6 @@ canvas {
   top: 0px;
   left: 0px;
   height: 100%;
-  // overflow: hidden;
 
   background: yellow;
   background: rgba(0, 0, 0, 0.2);
@@ -306,6 +322,8 @@ canvas {
   color: white;
   /* Note: backdrop-filter has minimal browser support */
   padding: 30px;
+
+  // overflow: hidden;
 
   img {
     width: 20%;
@@ -319,6 +337,10 @@ canvas {
     color: white;
   }
 
+  #careerBio {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
   p {
     font-weight: 300;
   }
@@ -329,7 +351,7 @@ canvas {
 
   .randomizeDesigner {
     margin-top: 30px;
-    width: 100%;
+    // width: 100%;
   }
 
   b {
@@ -355,25 +377,31 @@ canvas {
     margin-bottom: 12px;
   }
 
-  .data {
-    text-decoration: underline;
-  }
-
   .dependentData {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin: 40px 0;
+
     p {
-      color: rgba(255, 255, 255, 0.5);
-      margin: 20px 0 20px 0;
+      color: rgba(19, 148, 68, 1);
+      // margin: 20px 0 20px 0;
     }
 
     b {
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(19, 148, 68, 1);
     }
 
     #generatedData,
     #generatedSkills,
     #generatedBenefits,
     #generatedSalary {
-      color: rgba(255, 255, 255, 1);
+      opacity: 0.5;
+    }
+
+    #generatedSkills,
+    #generatedBenefits {
+      margin-top: 5px;
     }
   }
 
@@ -390,6 +418,7 @@ canvas {
     text-align: center;
     font-family: "Recoleta";
     font-weight: 600;
+    font-size: 18px;
   }
   .profile {
     margin: 3px 0;
@@ -407,6 +436,19 @@ canvas {
   }
 }
 
+.data-question {
+  opacity: 50%;
+}
+.data-answer,
+.data-question,
+.button {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
 .columnData {
   height: 100vh;
   pointer-events: none;
@@ -415,6 +457,9 @@ canvas {
   grid-template-columns: repeat(5, 400px);
   transition: background-color 300ms;
 
+  .data-question {
+    opacity: 70%;
+  }
   p {
     text-align: center;
   }
@@ -423,22 +468,8 @@ canvas {
     margin-top: 112px;
     color: white;
 
-    .data-question {
-      opacity: 50%;
-    }
-
     .data-answer {
       padding: 5px 60px;
-    }
-
-    .data-answer,
-    .data-question,
-    .button {
-      user-select: none; /* supported by Chrome and Opera */
-      -webkit-user-select: none; /* Safari */
-      -khtml-user-select: none; /* Konqueror HTML */
-      -moz-user-select: none; /* Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
     }
 
     .button {

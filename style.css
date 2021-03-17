@@ -104,6 +104,11 @@ a {
   font-size: 18px;
   font-family: "Recoleta" !important;
   font-weight: 600;
+  cursor: help;
+  transition: 0.2s opacity;
+}
+.logo a:hover {
+  opacity: 0.5;
 }
 
 .landing {
@@ -203,13 +208,11 @@ canvas {
   background: linear-gradient(270deg, #4686fc 0%, rgba(70, 134, 252, 0) 76.51%);
 }
 
-.returnHome {
+.about {
   position: fixed;
   right: 30px;
   bottom: 30px;
   height: auto;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
 }
 
 .button {
@@ -219,6 +222,8 @@ canvas {
   border-radius: 100px;
   padding: 17px 45px 17px 45px;
   font-family: "GT Flexa";
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   font-size: 15px;
   font-weight: 400;
   display: block;
@@ -228,16 +233,29 @@ canvas {
   text-align: center;
 }
 
-.quote {
+.quote-1,
+.quote-2,
+.quote-3,
+.quote-4,
+.quote-5 {
   text-align: center;
   border-radius: 20px;
   padding: 20px;
   margin: 30px;
-  background: rgba(255, 255, 255, 0.7);
-  color: #505050;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0;
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
   z-index: 10;
+  transition: opacity 0.5s;
+}
+
+.quote {
+  color: blue;
+}
+
+.showQuote {
+  opacity: 1;
 }
 
 .button:hover {
@@ -293,6 +311,9 @@ canvas {
   font-family: "Gt Flexa";
   color: white;
 }
+.designerCard #careerBio {
+  color: rgba(255, 255, 255, 0.5);
+}
 .designerCard p {
   font-weight: 300;
 }
@@ -301,7 +322,6 @@ canvas {
 }
 .designerCard .randomizeDesigner {
   margin-top: 30px;
-  width: 100%;
 }
 .designerCard b {
   font-weight: 500;
@@ -321,21 +341,27 @@ canvas {
 .designerCard .category:first-child {
   margin-bottom: 12px;
 }
-.designerCard .data {
-  text-decoration: underline;
+.designerCard .dependentData {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 15px 25px;
+  border-radius: 10px;
+  margin: 40px 0;
 }
 .designerCard .dependentData p {
-  color: rgba(255, 255, 255, 0.5);
-  margin: 20px 0 20px 0;
+  color: #139444;
 }
 .designerCard .dependentData b {
-  color: rgba(255, 255, 255, 0.5);
+  color: #139444;
 }
 .designerCard .dependentData #generatedData,
 .designerCard .dependentData #generatedSkills,
 .designerCard .dependentData #generatedBenefits,
 .designerCard .dependentData #generatedSalary {
-  color: white;
+  opacity: 0.5;
+}
+.designerCard .dependentData #generatedSkills,
+.designerCard .dependentData #generatedBenefits {
+  margin-top: 5px;
 }
 .designerCard hr {
   margin: 40px 0 40px 0;
@@ -349,6 +375,7 @@ canvas {
   text-align: center;
   font-family: "Recoleta";
   font-weight: 600;
+  font-size: 18px;
 }
 .portfolios .profile {
   margin: 3px 0;
@@ -364,29 +391,13 @@ canvas {
   margin-bottom: 40px;
 }
 
-.columnData {
-  height: 100vh;
-  pointer-events: none;
-  display: grid;
-  grid-template-columns: repeat(5, 400px);
-  transition: background-color 300ms;
-}
-.columnData p {
-  text-align: center;
-}
-.columnData .content {
-  margin-top: 112px;
-  color: white;
-}
-.columnData .content .data-question {
+.data-question {
   opacity: 50%;
 }
-.columnData .content .data-answer {
-  padding: 5px 60px;
-}
-.columnData .content .data-answer,
-.columnData .content .data-question,
-.columnData .content .button {
+
+.data-answer,
+.data-question,
+.button {
   user-select: none;
   /* supported by Chrome and Opera */
   -webkit-user-select: none;
@@ -397,6 +408,27 @@ canvas {
   /* Firefox */
   -ms-user-select: none;
   /* Internet Explorer/Edge */
+}
+
+.columnData {
+  height: 100vh;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(5, 400px);
+  transition: background-color 300ms;
+}
+.columnData .data-question {
+  opacity: 70%;
+}
+.columnData p {
+  text-align: center;
+}
+.columnData .content {
+  margin-top: 112px;
+  color: white;
+}
+.columnData .content .data-answer {
+  padding: 5px 60px;
 }
 .columnData .content .button {
   width: 150px;

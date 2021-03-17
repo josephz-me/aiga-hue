@@ -1,46 +1,4 @@
 $(function () {
-  let questions = [
-    "I've worked in design for:",
-    "I work in:",
-    "Industries I work with:",
-    "My skills include:",
-    "I am currently learning:",
-    "I am currently a/an:",
-    "I work in:__1",
-    "I work in:__2",
-    "I work in:__3",
-    "I'm not currently working because:",
-    "I'm a/an:",
-    "My job is challenging because:",
-    "My job is great because:",
-    "My organization has:",
-    "My department has:",
-    "I've worked here for:",
-    "I've had my role for:",
-    "I typically work:",
-    "I make:",
-    "My benefits include:",
-    "I have:",
-    "I am:",
-    "I am:__1",
-    "I feel:",
-    "On the side I:",
-    "I learned design from:",
-    "I got my degree in:",
-    "I've had:",
-    "I stay current with design by:",
-    "I'm currently:",
-    "My ZIP code is:",
-    "My age is:",
-    "I identify as:",
-    "LGBTQIA+ status:",
-    "I am:__2",
-    "I feel the most critical issues/challenges currently facing design are:",
-    "I feel the most critical issues/challenges currently facing design are:__",
-    "I think the emerging/future technologies that will have the biggest impact on design are:",
-    "I think the most critical design skills for the future will be:",
-    "My main priorities are:",
-  ];
   let careerBackend;
   let careerFrontend;
 
@@ -79,7 +37,12 @@ $(function () {
     "background-color",
     `${industries[careerFrontend].color}`
   );
+
+  //use custom career bg colors for text
   $(".designerCard h1").text(`The ${careerFrontend}`);
+  $(".dependentData p").css("color", industries[careerFrontend].textColor);
+  $(".dependentData b").css("color", industries[careerFrontend].textColor);
+  $(".quote").css("color", industries[careerFrontend].textColor);
 
   let selectedDesigners;
   let designersInCareer = [];
@@ -128,11 +91,31 @@ $(function () {
 
       selectedDesigners = [...designerHoursWorked];
       numDesigners = selectedDesigners.length;
-      console.log(numDesigners);
     }
 
-    // skills
+    //CHAT BUBBLES
+    let allSkills = selectedDesigners[0][questions[38]].split("|");
+    let randomizedSkill =
+      allSkills[Math.floor(Math.random() * allSkills.length)];
+    $(".quote-2").text(
+      `One of the most critical design skills for the future will be ${randomizedSkill.toLowerCase()}.`
+    );
 
+    let allChallenges = selectedDesigners[0][questions[35]].split("|");
+    let randomizedChallenge =
+      allChallenges[Math.floor(Math.random() * allChallenges.length)];
+    $(".quote-3").text(
+      `One of the most critical challenges facing design is ${randomizedChallenge.toLowerCase()}.`
+    );
+
+    let allIndustries = selectedDesigners[0][questions[2]].split("|");
+    let randomizedIndustry =
+      allIndustries[Math.floor(Math.random() * allIndustries.length)];
+    $(".quote-4").text(
+      `I am able to work with industries such as ${randomizedIndustry.toLowerCase()}.`
+    );
+
+    // SKILLS
     // Create empty dict for counting skills
 
     let countedSkills = {};
