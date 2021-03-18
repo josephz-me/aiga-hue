@@ -45,6 +45,8 @@ $(function () {
   $(".designerCard h1").text(`The ${careerFrontend}`);
   $(".dependentData p").css("color", industries[careerFrontend].textColor);
   $(".dependentData b").css("color", industries[careerFrontend].textColor);
+  $(".portfolios a").css("color", industries[careerFrontend].textColor);
+  $(".portfolios p").css("color", industries[careerFrontend].textColor);
   $(".quote").css("color", industries[careerFrontend].textColor);
 
   let selectedDesigners;

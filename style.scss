@@ -384,12 +384,14 @@ canvas {
     margin-bottom: 12px;
   }
 
-  .dependentData {
+  .whiteCard {
     background: rgba(255, 255, 255, 0.8);
-    padding: 20px 15px;
+    padding: 30px 15px;
     border-radius: 10px;
     backdrop-filter: blur(30px);
-    margin: 40px 0;
+  }
+  .dependentData {
+    margin: 40px 0 20px 0;
 
     p {
       color: rgba(19, 148, 68, 1);
@@ -421,13 +423,6 @@ canvas {
 .portfolios {
   padding-bottom: 50px;
 
-  .title {
-    margin-bottom: 30px;
-    text-align: center;
-    font-family: "Recoleta";
-    font-weight: 600;
-    font-size: 18px;
-  }
   .profile {
     margin: 5px 0;
     display: grid;
@@ -443,9 +438,14 @@ canvas {
       opacity: 0.5;
     }
   }
-  .responses {
-    margin-bottom: 40px;
-  }
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Recoleta" !important;
+  font-weight: 600 !important;
+  font-size: 18px;
 }
 
 .data-question {
