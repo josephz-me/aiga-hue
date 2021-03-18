@@ -195,8 +195,8 @@ $(function () {
               render: {
                 sprite: {
                   texture: `./img/${industries[key].text}`,
-                  xScale: svgScale / 4,
-                  yScale: svgScale / 4,
+                  xScale: svgScale / 1,
+                  yScale: svgScale / 1,
                 },
               },
             },
@@ -266,4 +266,17 @@ const hideLoading = () => {
   setTimeout(() => {
     $(".loadingScreen").remove();
   }, 3000);
+};
+
+const openAbout = () => {
+  // Get the modal
+  let modal = document.getElementById("aboutModal");
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      $("#aboutModal").removeClass("showAbout");
+    }
+  };
+
+  $("#aboutModal").addClass("showAbout");
 };

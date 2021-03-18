@@ -48,6 +48,7 @@ $(function () {
   $(".portfolios a").css("color", industries[careerFrontend].textColor);
   $(".portfolios p").css("color", industries[careerFrontend].textColor);
   $(".quote").css("color", industries[careerFrontend].textColor);
+  $(".datavisCatch").css("background-color", industries[careerFrontend].color);
 
   let selectedDesigners;
   let designersInCareer = [];
