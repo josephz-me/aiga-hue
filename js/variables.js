@@ -44,6 +44,8 @@ const questions = [
 const industries = {
   "Graphic Designer": {
     name: "Graphic Designer",
+    bio:
+      "Graphic Designers create visual communications that convey messages beautifully and effectively using principles such as typography, shape and color.",
     backend: "Graphic design",
     file: "graphic.png",
     svg: "graphic-vector.svg",
@@ -54,6 +56,8 @@ const industries = {
   },
   "UX/UI Designer": {
     name: "UX/UI Designer",
+    bio:
+      "UX/UI Designers develop enjoyable and accessible experiences for users across digital platforms using design principles, prototyping tools and code.",
     backend: "UX design",
     file: "uxui.png",
     svg: "uxui-vector.svg",
@@ -65,6 +69,8 @@ const industries = {
   },
   Illustrator: {
     name: "Illustrator",
+    bio:
+      "Illustrators create images using physical and digital tools that convey ideas and stories through materials like books, character design, and concept art.",
     backend: "Illustration",
     file: "illustrator.png",
     svg: "illustrator-vector.svg",
@@ -75,6 +81,8 @@ const industries = {
   },
   "Game Designer": {
     name: "Game Designer",
+    bio:
+      "Game Designers work on teams to create stories, characters and assets used in video games through skills like writing code, 3D modeling, and animation.",
     backend: "Game design",
     file: "game.png",
     svg: "game-vector.svg",
@@ -86,6 +94,8 @@ const industries = {
   },
   "AI Designer": {
     name: "AI Designer",
+    bio:
+      "AI Designers work with teams of engineers to create AI prototypes, build developer tools, and collect data to increase the effectiveness of services.",
     backend: "AI / Algorithm design",
     file: "ai.png",
     svg: "ai-vector.svg",
@@ -96,6 +106,8 @@ const industries = {
   },
   "Packaging Designer": {
     name: "Packaging Designer",
+    bio:
+      "Packaging Designers design beautiful and economical packaging for clients using graphic and industrial design principles like color, form, and typography.",
     backend: "Packaging design",
     file: "packaging.png",
     svg: "packaging-vector.svg",
@@ -106,6 +118,8 @@ const industries = {
   },
   "AR/VR Designer": {
     name: "AR/VR Designer",
+    bio:
+      "AR/VR Designers create immersive experiences across AR/VR applications using their knowledge of design principles, 3D tools, and code.",
     backend: "AR / VR design",
     file: "arvr.png",
     svg: "arvr-vector.svg",

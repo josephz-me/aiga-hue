@@ -240,7 +240,7 @@ canvas {
 
 .button {
   background: rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-sizing: border-box;
   border-radius: 100px;
   padding: 17px 45px 17px 45px;
@@ -328,6 +328,7 @@ canvas {
   img {
     width: 20%;
     height: auto;
+    margin-top: 30px;
     margin-bottom: 10px;
   }
   p,
@@ -352,6 +353,12 @@ canvas {
   .randomizeDesigner {
     margin-top: 30px;
     // width: 100%;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: none;
+  }
+
+  .randomizeDesigner:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   b {
@@ -379,8 +386,9 @@ canvas {
 
   .dependentData {
     background: rgba(255, 255, 255, 0.8);
-    padding: 15px 25px;
+    padding: 20px 15px;
     border-radius: 10px;
+    backdrop-filter: blur(30px);
     margin: 40px 0;
 
     p {
@@ -421,7 +429,7 @@ canvas {
     font-size: 18px;
   }
   .profile {
-    margin: 3px 0;
+    margin: 5px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
 
@@ -429,6 +437,10 @@ canvas {
       justify-self: end;
       text-decoration: underline;
       opacity: 0.75;
+      transition: 0.1s opacity;
+    }
+    a:hover {
+      opacity: 0.5;
     }
   }
   .responses {

@@ -12,7 +12,7 @@ let Engine = Matter.Engine,
   Common = Matter.Common,
   Svg = Matter.Svg;
 
-let engine = Engine.create();
+let engine = Engine.create({});
 let columnWidth = 400;
 let columnNum = 5;
 
@@ -30,6 +30,8 @@ let render = Render.create({
     wireframeBackground: "transparent",
   },
 });
+
+Matter.Render.setPixelRatio(render, "auto");
 
 //boundaries
 let thickness = 100;
@@ -100,7 +102,7 @@ const startDataVis = (
         loadSvg("./img/satisfactionIcons/chat-vector.svg").then(function (
           root
         ) {
-          let svgScale = 0.2;
+          let svgScale = 0.17;
           var vertexSets = select(root, "path").map(function (path) {
             return Vertices.scale(
               Svg.pathToVertices(path, 30),

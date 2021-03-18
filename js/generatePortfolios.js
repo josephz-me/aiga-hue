@@ -1,126 +1,207 @@
-// https://developers.google.com/sheets/api/quickstart/js
-//https://console.cloud.google.com/apis/credentials/oauthclient/881169780362-ii0egvl0h94gtbbs5vr9iejv7cqpc5ku.apps.googleusercontent.com?authuser=1&project=aiga-design-1615907291563
-//https://www.youtube.com/watch?v=shctaaILCiU
+// developers.google.com/sheets/api/quickstart/js
+//console.cloud.google.com/apis/credentials/oauthclient/881169780362-ii0egvl0h94gtbbs5vr9iejv7cqpc5ku.apps.googleusercontent.com?authuser=1&project=aiga-design-1615907291563
+//youtube.com/watch?v=shctaaILCiU
 
-// Client ID and API key from the Developer Console
-var CLIENT_ID =
-  "881169780362-ii0egvl0h94gtbbs5vr9iejv7cqpc5ku.apps.googleusercontent.com";
-var API_KEY = "AIzaSyC5rUUdumK2PSWHTlVZ6Bm8U6f0mQ7zrTE";
-
-// Array of API discovery doc URLs for APIs used by the quickstart
-var DISCOVERY_DOCS = [
-  "https://sheets.googleapis.com/$discovery/rest?version=v4",
+let portfolios = [
+  {
+    name: "Michael Levall",
+    designerType: "Game Designer",
+    link: "michaellevall.com",
+  },
+  {
+    name: "David Shaver",
+    designerType: "Game Designer",
+    link: "davidshaver.net",
+  },
+  {
+    name: "Jay van Hutten",
+    designerType: "Game Designer",
+    link: "jayvanhutten.com",
+  },
+  {
+    name: "Nathalie Jankie",
+    designerType: "Game Designer",
+    link: "nathaliejankie.nl/",
+  },
+  {
+    name: "Nicolas Kraj",
+    designerType: "Game Designer",
+    link: "nicolaskraj.com",
+  },
+  {
+    name: "Alex Coven",
+    designerType: "Graphic Designer",
+    link: "alexcoven.com",
+  },
+  {
+    name: "Martijn Snapper",
+    designerType: "Graphic Designer",
+    link: "martijnsnapper.com",
+  },
+  {
+    name: "Stephen Calvillo",
+    designerType: "Graphic Designer",
+    link: "stephencalvillodesign.com",
+  },
+  {
+    name: "Julie Bonnemoy",
+    designerType: "Graphic Designer",
+    link: "juliebonnemoy.com",
+  },
+  {
+    name: "Kevin",
+    designerType: "Graphic Designer",
+    link: "kevincraftdesign.com",
+  },
+  {
+    name: "Alexandra Erkaeva",
+    designerType: "Illustrator",
+    link: "erkaeva.com",
+  },
+  {
+    name: "Naomi Wilkinson",
+    designerType: "Illustrator",
+    link: "naomiwilkinson.co.uk/",
+  },
+  {
+    name: "Nake Kitch",
+    designerType: "Illustrator",
+    link: "natekitch.com",
+  },
+  {
+    name: "Ping Zhu",
+    designerType: "Illustrator",
+    link: "pingszoo.com",
+  },
+  {
+    name: "Malika Favre",
+    designerType: "Illustrator",
+    link: "malikafavre.com",
+  },
+  {
+    name: "Aileen",
+    designerType: "UX/UI Designer",
+    link: "aileen.co",
+  },
+  {
+    name: "Wendy Schorr",
+    designerType: "UX/UI Designer",
+    link: "wendyschorr.com",
+  },
+  {
+    name: "Zara Drei",
+    designerType: "UX/UI Designer",
+    link: "zaradrei.com",
+  },
+  {
+    name: "Vera Chen",
+    designerType: "UX/UI Designer",
+    link: "verachen.me",
+  },
+  {
+    name: "Ljubomir Bardžić",
+    designerType: "UX/UI Designer",
+    link: "ljubomirbardzic.com",
+  },
+  {
+    name: "Adlan Ramly",
+    designerType: "AR/VR Designer",
+    link: "adlanramly.com",
+  },
+  {
+    name: "Marina Roselli",
+    designerType: "AR/VR Designer",
+    link: "mroselli.com",
+  },
+  {
+    name: "Tica Lin",
+    designerType: "AR/VR Designer",
+    link: "ticalin.com",
+  },
+  {
+    name: "Thiébault Delaporte-Richard",
+    designerType: "AR/VR Designer",
+    link: "thieb.co",
+  },
+  {
+    name: "Dominik Hofacker",
+    designerType: "AR/VR Designer",
+    link: "dominikhofacker.me/",
+  },
+  {
+    name: "Quentin Moreau",
+    designerType: "AR/VR Designer",
+    link: "quentinmoreau.com",
+  },
+  {
+    name: "Qian Yang",
+    designerType: "AI Designer",
+    link: "yangqian.myportfolio.comhome",
+  },
+  {
+    name: "Eric Wadkins",
+    designerType: "AI Designer",
+    link: "ericwadkins.com",
+  },
+  {
+    name: "Damir Kotoric",
+    designerType: "AI Designer",
+    link: "damirkotoric.com",
+  },
+  {
+    name: "Nadia Piet",
+    designerType: "AI Designer",
+    link: "nadiapiet.com",
+  },
+  {
+    name: "Josh Campbell",
+    designerType: "AI Designer",
+    link: "driftcafe.com",
+  },
+  {
+    name: "Ethan Ye",
+    designerType: "AI Designer",
+    link: "ethanye.com",
+  },
+  {
+    name: "Cheri Zhou",
+    designerType: "Packaging Designer",
+    link: "cherizhou.cc",
+  },
+  {
+    name: "Kati Forner",
+    designerType: "Packaging Designer",
+    link: "katiforner.com",
+  },
+  {
+    name: "Studio MPLS",
+    designerType: "Packaging Designer",
+    link: "studiompls.com",
+  },
+  {
+    name: "Auge Design",
+    designerType: "Packaging Designer",
+    link: "auge-design.com",
+  },
+  {
+    name: "Think Packaging",
+    designerType: "Packaging ",
+    link: "auge-design.com",
+  },
 ];
 
-// Authorization scopes required by the API; multiple scopes can be
-// included, separated by spaces.
-var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
-
-var authorizeButton = document.getElementById("authorize_button");
-var signoutButton = document.getElementById("signout_button");
-
-/**
- *  On load, called to load the auth2 library and API client library.
- */
-function handleClientLoad() {
-  gapi.load("client:auth2", initClient);
-}
-
-/**
- *  Initializes the API client library and sets up sign-in state
- *  listeners.
- */
-function initClient() {
-  gapi.client
-    .init({
-      apiKey: API_KEY,
-      clientId: CLIENT_ID,
-      discoveryDocs: DISCOVERY_DOCS,
-      scope: SCOPES,
-    })
-    .then(
-      function () {
-        // Listen for sign-in state changes.
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-        // Handle the initial sign-in state.
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-        authorizeButton.onclick = handleAuthClick;
-        signoutButton.onclick = handleSignoutClick;
-      },
-      function (error) {
-        appendPre(JSON.stringify(error, null, 2));
-      }
-    );
-}
-
-/**
- *  Called when the signed in status changes, to update the UI
- *  appropriately. After a sign-in, the API is called.
- */
-function updateSigninStatus(isSignedIn) {
-  if (isSignedIn) {
-    authorizeButton.style.display = "none";
-    signoutButton.style.display = "block";
-    listMajors();
-  } else {
-    authorizeButton.style.display = "block";
-    signoutButton.style.display = "none";
+const generatePortfolios = (career) => {
+  console.log(career);
+  for (portfolio in portfolios) {
+    if (portfolios[portfolio].designerType === career) {
+      console.log("matched");
+      $(".responses").append(`
+      <div class='profile'>
+      <p>${portfolios[portfolio].name}</p>
+      <a target='_blank' href='https://www.${portfolios[portfolio].link}'>${portfolios[portfolio].link}</a>
+      </div>`);
+    } else {
+      // console.log("not found");
+    }
   }
-}
-
-/**
- *  Sign in the user upon button click.
- */
-function handleAuthClick(event) {
-  gapi.auth2.getAuthInstance().signIn();
-}
-
-/**
- *  Sign out the user upon button click.
- */
-function handleSignoutClick(event) {
-  gapi.auth2.getAuthInstance().signOut();
-}
-
-/**
- * Append a pre element to the body containing the given message
- * as its text node. Used to display the results of the API call.
- *
- * @param {string} message Text to be placed in pre element.
- */
-function appendPre(message) {
-  var pre = document.getElementById("content");
-  var textContent = document.createTextNode(message + "\n");
-  pre.appendChild(textContent);
-}
-
-/**
- * Print the names and majors of students in a sample spreadsheet:
- * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
- */
-function listMajors() {
-  gapi.client.sheets.spreadsheets.values
-    .get({
-      spreadsheetId: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
-      range: "Class Data!A2:E",
-    })
-    .then(
-      function (response) {
-        var range = response.result;
-        if (range.values.length > 0) {
-          appendPre("Name, Major:");
-          for (i = 0; i < range.values.length; i++) {
-            var row = range.values[i];
-            // Print columns A and E, which correspond to indices 0 and 4.
-            appendPre(row[0] + ", " + row[4]);
-          }
-        } else {
-          appendPre("No data found.");
-        }
-      },
-      function (response) {
-        appendPre("Error: " + response.result.error.message);
-      }
-    );
-}
+};

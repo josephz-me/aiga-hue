@@ -74,6 +74,8 @@ $(function () {
     },
   });
 
+  Matter.Render.setPixelRatio(render, "auto");
+
   //boundaries
   let thickness = 200;
   let ground = Bodies.rectangle(

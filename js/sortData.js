@@ -1,7 +1,6 @@
 $(function () {
   let careerBackend;
   let careerFrontend;
-
   randomizeDesigner = () => {
     careerFrontend = Object.keys(industries)[
       getRandomInt(Object.keys(industries).length)
@@ -19,6 +18,8 @@ $(function () {
     careerFrontend = sessionStorage.getItem("careerFrontend");
   }
 
+  generatePortfolios(careerFrontend);
+
   const sortResponses = (unsorted) => {
     let responsesArr = Object.entries(unsorted);
     responsesArr.sort((a, b) => {
@@ -33,12 +34,14 @@ $(function () {
 
   $(".designerCard img").attr("src", `img/${industries[careerFrontend].file}`);
   $("body").css("background", `${industries[careerFrontend].color}`);
+
   $(".loadingScreen").css(
     "background-color",
     `${industries[careerFrontend].color}`
   );
 
   //use custom career bg colors for text
+  $("#careerBio").text(industries[careerFrontend].bio);
   $(".designerCard h1").text(`The ${careerFrontend}`);
   $(".dependentData p").css("color", industries[careerFrontend].textColor);
   $(".dependentData b").css("color", industries[careerFrontend].textColor);
