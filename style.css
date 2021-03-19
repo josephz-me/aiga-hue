@@ -126,7 +126,6 @@
   padding: 10px 20px 10px 20px;
   width: 700px;
   padding: 40px 20px 80px 40px;
-  overflow: scroll;
 }
 .about-modal-content .columns {
   grid-gap: 40px;
