@@ -73,6 +73,14 @@
   font-family: "Recoleta";
 }
 
+.landingLogo {
+  cursor: help;
+}
+
+.datavis {
+  cursor: pointer;
+}
+
 /* The Modal (background) */
 .aboutModal {
   z-index: 1010;
@@ -145,6 +153,7 @@
 .about-modal-content a {
   color: white;
   opacity: 100%;
+  display: inline;
 }
 .about-modal-content a:visited {
   color: white;
@@ -226,7 +235,6 @@ a {
   font-size: 18px;
   font-family: "Recoleta" !important;
   font-weight: 600;
-  cursor: help;
   transition: 0.2s opacity;
 }
 .logo a:hover {
