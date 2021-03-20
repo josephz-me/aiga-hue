@@ -191,10 +191,8 @@ let portfolios = [
 ];
 
 const generatePortfolios = (career) => {
-  console.log(career);
   for (portfolio in portfolios) {
     if (portfolios[portfolio].designerType === career) {
-      console.log("matched");
       $(".responses").append(`
       <div class='profile'>
       <p>${portfolios[portfolio].name}</p>

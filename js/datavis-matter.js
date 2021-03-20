@@ -119,6 +119,7 @@ const startDataVis = (
               {
                 restitution: 0.5,
                 quoteCol: "quote-" + (c + 1),
+                columnBound: c + 1,
                 render: {
                   sprite: {
                     texture: `./img/satisfactionIcons/chat-inactive.png`,
@@ -158,6 +159,7 @@ const startDataVis = (
               {
                 restitution: 0.5,
                 column: c + 1,
+                columnBound: c + 1,
                 render: {
                   sprite: {
                     texture: `./img/satisfactionIcons/${
@@ -227,9 +229,10 @@ const startDataVis = (
   mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
   mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
 
-  Matter.Events.on(mouseConstraint, "mousedown", function () {
+  let body;
+  Events.on(mouseConstraint, "mousedown", function () {
     if (this.body !== null) {
-      let body = mouseConstraint.body;
+      body = mouseConstraint.body;
       if ("quoteCol" in body) {
         let desiredQuote = $(`.${body.quoteCol}`);
         body.render.sprite.texture = "./img/satisfactionIcons/chat-active.png";
@@ -240,8 +243,18 @@ const startDataVis = (
           //   "./img/satisfactionIcons/chat-inactive.png";
         }, 6000);
       } else {
-        console.log("not a chat bubble");
       }
+    }
+  });
+
+  Events.on(mouseConstraint, "enddrag", function () {
+    let column = body.columnBound;
+
+    if (
+      body.position.x < (column - 1) * 400 ||
+      body.position.x > (column - 1) * 400 + 400
+    ) {
+      Body.setPosition(body, { x: (column - 1) * 400 + 200, y: 200 });
     }
   });
 
@@ -283,7 +296,9 @@ const replaceBodies = (columnNum, category, response, responsePercent) => {
           Common.random(0, 100),
           vertexSets,
           {
+            restitution: 0.5,
             column: satisfactionLevels[category][response].column,
+            columnBound: satisfactionLevels[category][response].column,
             render: {
               sprite: {
                 texture: `./img/satisfactionIcons/${satisfactionLevels[category][response].image}`,
