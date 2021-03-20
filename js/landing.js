@@ -42,6 +42,14 @@ $(function () {
 
   // PHYSICS STUFF
 
+  $(".logo")
+    .on("mouseenter", () => {
+      $(".logo a").text("AIGA & You!");
+    })
+    .on("mouseleave", () => {
+      $(".logo a").text("AIGA & Hue");
+    });
+
   let Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
@@ -164,8 +172,8 @@ $(function () {
               render: {
                 sprite: {
                   texture: `./img/${industries[key].file}`,
-                  xScale: svgScale / 2,
-                  yScale: svgScale / 2,
+                  xScale: svgScale / 1,
+                  yScale: svgScale / 1,
                 },
               },
             },
@@ -236,24 +244,6 @@ $(function () {
   ]);
   Engine.run(engine);
   Render.run(render);
-
-  var explosion = function (engine) {
-    var bodies = Composite.allBodies(engine.world);
-    for (var i = 0; i < bodies.length; i++) {
-      var body = bodies[i];
-
-      if (!body.isStatic && body.position.y >= 500) {
-        var forceMagnitude = 0.02 * body.mass;
-
-        Body.applyForce(body, body.position, {
-          x:
-            (forceMagnitude + Common.random() * forceMagnitude) *
-            Common.choose([1, -1]),
-          y: -forceMagnitude + Common.random() * -forceMagnitude,
-        });
-      }
-    }
-  };
 
   hideLoading();
 });

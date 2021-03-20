@@ -91,6 +91,10 @@
   cursor: help;
 }
 
+.landingLogo:hover {
+  animation: shake s;
+}
+
 .datavis .logo {
   cursor: pointer;
 }

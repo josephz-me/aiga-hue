@@ -58,10 +58,20 @@ $(function () {
   $.getJSON("data.json", (data) => {
     //CAREER
     for (let designer in data) {
-      if (data[designer][questions[1]].includes(careerBackend)) {
-        designersInCareer.push(data[designer]);
+      if (careerBackend === "UX design") {
+        if (
+          data[designer][questions[1]].includes(careerBackend) ||
+          data[designer][questions[1]].includes("UI design")
+        ) {
+          designersInCareer.push(data[designer]);
+        }
+      } else {
+        if (data[designer][questions[1]].includes(careerBackend)) {
+          designersInCareer.push(data[designer]);
+        }
       }
     }
+    console.log(designersInCareer.length);
 
     let numDesigners = 0;
     let hoursWorked;
