@@ -42,14 +42,6 @@ $(function () {
 
   // PHYSICS STUFF
 
-  $(".logo")
-    .on("mouseenter", () => {
-      $(".logo a").text("AIGA & You!");
-    })
-    .on("mouseleave", () => {
-      $(".logo a").text("AIGA & Hue");
-    });
-
   let Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,

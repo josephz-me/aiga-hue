@@ -269,3 +269,11 @@ const satisfactionLevels = {
     },
   },
 };
+
+$(".logo")
+  .on("mouseenter", () => {
+    $(".logo a").text("AIGA & You");
+  })
+  .on("mouseleave", () => {
+    $(".logo a").text("AIGA & Hue");
+  });
