@@ -67,7 +67,6 @@
   background: black;
   color: white;
   transition: 0.4s opacity;
-  pointer-events: none;
 }
 .browserWidthCatch p {
   font-family: "Recoleta";
@@ -111,6 +110,50 @@
 .showAbout {
   opacity: 1;
   pointer-events: visible;
+}
+
+.onboarding-container {
+  z-index: 100;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  /* Stay in place */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  top: 0;
+  left: 380px;
+  opacity: 1;
+  background: rgba(34, 38, 57, 0.6);
+  visibility: hidden;
+  animation: fadeIn 0.5s 0.5s ease-in both;
+}
+
+.onboarding {
+  position: absolute;
+  left: 30px;
+  top: 36px;
+  width: 340px;
+  height: auto;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 20px;
+}
+.onboarding h1,
+.onboarding p {
+  color: white;
+}
+.onboarding h1 {
+  font-family: "recoleta";
+  font-size: 20px;
+  font-weight: 500;
+}
+.onboarding p {
+  margin: 10px 0 30px;
 }
 
 /* Modal Content */
@@ -328,7 +371,7 @@ a {
   }
 }
 canvas {
-  z-index: 0;
+  z-index: -10;
   overflow-y: hidden;
 }
 
@@ -351,11 +394,11 @@ canvas {
 .button {
   background: rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
   box-sizing: border-box;
   border-radius: 100px;
   padding: 17px 45px 17px 45px;
   font-family: "GT Flexa";
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   font-size: 15px;
   font-weight: 400;

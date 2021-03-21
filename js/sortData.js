@@ -1,6 +1,7 @@
 $(function () {
   let careerBackend;
   let careerFrontend;
+
   randomizeDesigner = () => {
     careerFrontend = Object.keys(industries)[
       getRandomInt(Object.keys(industries).length)
@@ -55,6 +56,13 @@ $(function () {
   let designerEmploymentType = [];
   let designerHoursWorked = [];
 
+  console.log(sessionStorage.getItem("enteredBefore"));
+  if (sessionStorage.getItem("enteredBefore") === null) {
+    console.log("first time");
+    $(".onboarding-container").css("visibility", "visible");
+    sessionStorage.setItem("enteredBefore", true);
+  }
+
   $.getJSON("data.json", (data) => {
     //CAREER
     for (let designer in data) {
@@ -71,7 +79,6 @@ $(function () {
         }
       }
     }
-    console.log(designersInCareer.length);
 
     let numDesigners = 0;
     let hoursWorked;
@@ -534,6 +541,14 @@ $(function () {
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
+
+  $(".cancel").on("click", () => {
+    $(".onboarding-container").css("display", "none");
+  });
+
+  $(".onboarding-container").on("click", () => {
+    $(".onboarding-container").css("display", "none");
+  });
 
   hideLoading();
 });
