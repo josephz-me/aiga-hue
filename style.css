@@ -127,7 +127,7 @@
   opacity: 1;
   background: rgba(34, 38, 57, 0.6);
   visibility: hidden;
-  animation: fadeIn 0.5s 0.5s ease-in both;
+  animation: fadeIn 0.5s 1s ease-in both;
 }
 
 .onboarding {

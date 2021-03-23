@@ -58,7 +58,6 @@ $(function () {
 
   console.log(sessionStorage.getItem("enteredBefore"));
   if (sessionStorage.getItem("enteredBefore") === null) {
-    console.log("first time");
     $(".onboarding-container").css("visibility", "visible");
     sessionStorage.setItem("enteredBefore", true);
   }
@@ -543,10 +542,6 @@ $(function () {
   }
 
   $(".cancel").on("click", () => {
-    $(".onboarding-container").css("display", "none");
-  });
-
-  $(".onboarding-container").on("click", () => {
     $(".onboarding-container").css("display", "none");
   });
 
