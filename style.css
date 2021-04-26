@@ -52,10 +52,10 @@
 
 .browserWidthCatch {
   opacity: 0;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   position: fixed;
-  z-index: 100;
+  z-index: 10000;
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -68,8 +68,18 @@
   color: white;
   transition: 0.4s opacity;
 }
+.browserWidthCatch .catch-container {
+  display: block;
+}
 .browserWidthCatch p {
   font-family: "Recoleta";
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.browserWidthCatch img {
+  width: auto;
+  height: 300px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0px 10px 100px rgba(0, 0, 0, 0.25));
 }
 
 .landingLogo {
@@ -225,6 +235,16 @@
 @media only screen and (max-width: 790px) {
   .browserWidthCatch {
     opacity: 100%;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .browserWidthCatch img {
+    width: 250px;
+    height: auto;
+  }
+  .browserWidthCatch p {
+    width: 250px;
+    margin: 0 auto;
   }
 }
 body {
@@ -466,7 +486,6 @@ canvas {
   top: 0px;
   left: 0px;
   height: 100%;
-  background: yellow;
   background: rgba(0, 0, 0, 0.2);
   border-right: 1px solid rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
