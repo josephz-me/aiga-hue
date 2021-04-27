@@ -255,7 +255,7 @@
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 400px) {
   .browserWidthCatch {
     img {
       width: 250px;
@@ -266,6 +266,10 @@
       width: 250px;
       margin: 0 auto;
     }
+  }
+
+  main {
+    display: none;
   }
 }
 

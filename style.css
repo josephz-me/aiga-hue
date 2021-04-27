@@ -237,7 +237,7 @@
     opacity: 100%;
   }
 }
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 400px) {
   .browserWidthCatch img {
     width: 250px;
     height: auto;
@@ -245,6 +245,10 @@
   .browserWidthCatch p {
     width: 250px;
     margin: 0 auto;
+  }
+
+  main {
+    display: none;
   }
 }
 body {
